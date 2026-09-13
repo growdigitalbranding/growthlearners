@@ -72,10 +72,11 @@ export default function FinalCta() {
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
             <motion.p variants={reveal} className="eyebrow mb-5 text-bg/65">
-              Next batch {batchStartDisplay}
+              Next batch {batchStartDisplay} · {SITE.seats} seats · {SITE.city}
             </motion.p>
-            <motion.h2 variants={reveal} className="max-w-[16ch] font-serif text-h2 text-bg">
-              {SITE.seats} seats. Ask us anything first.
+            <motion.h2 variants={reveal} className="max-w-[22ch] text-balance font-serif text-h2 text-bg">
+              30 days from now you could still be watching AI tutorials.{' '}
+              <span className="text-accent">Or you could have built all of it.</span>
             </motion.h2>
             <motion.p variants={reveal} className="mt-6 max-w-md text-lead text-bg/70">
               Message us on WhatsApp and you will get a straight answer from someone who teaches the
@@ -85,7 +86,7 @@ export default function FinalCta() {
             <motion.div variants={reveal} className="mt-9">
               <WhatsAppCta
                 location="final"
-                label="WhatsApp us"
+                label="Reserve my seat"
                 className="btn-accent w-full !min-h-[3.5rem] text-base sm:w-auto sm:!px-8"
                 iconSize={20}
               />

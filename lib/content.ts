@@ -27,181 +27,181 @@ export type Week = {
 export const WEEKS: Week[] = [
   {
     n: 1,
-    label: 'Week 1',
-    title: 'Foundations and your own site',
+    label: 'Stage 01',
+    title: 'Think',
     summary:
-      'You learn how money actually moves online, then you put something live on a domain you own. By Friday you have a site and you can prove a form submission reached your analytics.',
-    checkpoint: 'Live site on your own domain, with GA4 firing a verified lead event.',
+      'Research and strategy. Before anything is generated, you decide who it is for, what it says and what it has to achieve. This is the week that stops the other three being guesswork.',
+    checkpoint: 'A research pack, a positioning line, a 30-day content calendar and a creative brief.',
     sessions: [
       {
         n: 1,
-        title: 'How money actually moves online',
+        title: 'What the marketing job actually is now',
         objective:
-          'Map a real Coimbatore business from first click to paid customer and name the metric that governs each step.',
-        tools: ['Google Sheets'],
-      },
-      {
-        n: 2,
-        title: 'Positioning, offer, and the one-line promise',
-        objective:
-          'Write the audience definition and one-line offer for the business you will market for the next 30 days.',
+          'Map how a campaign gets made today and name which parts AI does, which parts you do, and which parts nobody should automate.',
         tools: ['Claude', 'ChatGPT'],
       },
       {
-        n: 3,
-        title: 'Domain, hosting, and a site that is live tonight',
+        n: 2,
+        title: 'AI research: audience, market, competitor',
         objective:
-          'Register a domain and publish a five-section site on hosting registered in your own name.',
-        tools: ['GoDaddy', 'Hostinger', 'WordPress'],
+          'Produce a research pack on a real local business in an afternoon, and separate what the model knows from what it invented.',
+        tools: ['Claude', 'ChatGPT', 'Perplexity'],
+      },
+      {
+        n: 3,
+        title: 'Positioning and the one-line promise',
+        objective:
+          'Write the audience definition and single promise that every asset for the next 30 days has to serve.',
+        tools: ['Claude', 'Google Sheets'],
       },
       {
         n: 4,
-        title: 'Landing page anatomy and copy that converts',
+        title: 'The 30-day content strategy',
         objective:
-          'Rebuild your page around a single conversion goal with hero, proof and CTA blocks you wrote yourself.',
-        tools: ['Elementor', 'Claude'],
+          'Build a content calendar with a reason behind every slot, not a grid filled to look busy.',
+        tools: ['ChatGPT', 'Google Sheets', 'Notion'],
       },
       {
         n: 5,
-        title: 'Tracking before traffic',
+        title: 'The creative brief',
         objective:
-          'Install GA4 and Tag Manager, fire a form-submit event, and prove it in DebugView before a rupee is spent.',
-        tools: ['GA4', 'Google Tag Manager', 'Meta Pixel'],
+          'Write the one-page brief that every image, video and ad in the rest of the course is generated from.',
+        tools: ['Claude', 'Notion'],
       },
     ],
   },
   {
     n: 2,
-    label: 'Week 2',
-    title: 'Search, AI content, and the creative',
+    label: 'Stage 02',
+    title: 'Create',
     summary:
-      'Two ways to be found and one way to be remembered. You take a keyword from research to a published page, set up the local listing that actually ranks in Coimbatore, and cut your first AI video ad.',
-    checkpoint: 'A published, optimised page and a 20-second vertical ad, both reviewed in class.',
+      'Design, content and campaign assets. You build a look the brand can repeat, then generate and art-direct the creative that comes out of it.',
+    checkpoint: 'A brand creative system and a full set of ad creative built from your own brief.',
     sessions: [
       {
         n: 6,
-        title: 'Keyword research and search intent',
+        title: 'Brand creative system',
         objective:
-          'Build a keyword map that separates informational, commercial and transactional intent, and pick the terms worth paying for.',
-        tools: ['Keyword Planner', 'Ubersuggest', 'Search Console'],
+          'Define the colour, type, tone and composition rules that make twenty generated assets look like one brand.',
+        tools: ['Canva', 'Claude', 'Figma'],
       },
       {
         n: 7,
-        title: 'On-page and technical SEO',
+        title: 'AI images: prompt, iterate, art-direct',
         objective:
-          'Optimise titles, headings, internal links and schema, then fix what PageSpeed Insights flags on your own site.',
-        tools: ['Rank Math', 'PageSpeed Insights', 'Screaming Frog'],
+          'Take one creative brief to a finished image through structured prompting and deliberate iteration, not luck.',
+        tools: ['Midjourney', 'Nano Banana', 'Gemini'],
       },
       {
         n: 8,
-        title: 'AI content systems, not AI slop',
+        title: 'Ad creative that sells',
         objective:
-          'Take one keyword to a publish-ready 1,200-word page through an AI brief, draft and human edit pass.',
-        tools: ['Claude', 'ChatGPT', 'Grammarly'],
+          'Build a set of ad creatives against a single angle and say out loud why each one should work.',
+        tools: ['Midjourney', 'Canva', 'Meta Ads Manager'],
       },
       {
         n: 9,
-        title: 'Local SEO and Google Business Profile',
+        title: 'Copy systems: hooks, angles, variations',
         objective:
-          'Set up and optimise a Business Profile, build local citations, and start the review loop that moves map rankings.',
-        tools: ['Google Business Profile', 'Google Maps'],
+          'Generate and edit twenty hooks from one angle, then cut them down to the three worth spending money on.',
+        tools: ['Claude', 'ChatGPT'],
       },
       {
         n: 10,
-        title: 'AI video ads: script, generate, cut',
+        title: 'The social campaign build',
         objective:
-          'Script and produce a 20-second vertical ad using AI generation plus a manual edit pass.',
-        tools: ['HeyGen', 'Runway', 'CapCut', 'Canva'],
+          'Assemble a complete social campaign from your calendar, creative system and copy set.',
+        tools: ['Canva', 'Meta Business Suite'],
       },
     ],
   },
   {
     n: 3,
-    label: 'Week 3',
-    title: 'Live campaigns on Google and Meta',
+    label: 'Stage 03',
+    title: 'Produce',
     summary:
-      'Real budget, real auctions, real consequences. You build and launch on both platforms, then spend two sessions reading what came back and changing it.',
-    checkpoint: 'Live campaigns on Meta and Google, plus a written optimisation report on your own numbers.',
+      'Video, ad film and creative direction. AI is the production engine and you are the director. This is the week most courses skip entirely.',
+    checkpoint: 'A finished AI video advertisement and an ad film, both cut from your own storyboard.',
     sessions: [
       {
         n: 11,
-        title: 'Meta Ads architecture',
+        title: 'From still to motion',
         objective:
-          'Structure a lead-generation campaign with audiences, placements and a budget that survives the learning phase.',
-        tools: ['Meta Ads Manager', 'Meta Business Suite'],
+          'Turn a finished image into controlled movement and judge when motion adds meaning and when it adds noise.',
+        tools: ['Kling', 'Runway'],
       },
       {
         n: 12,
-        title: 'Launch day: your Meta campaign goes live',
+        title: 'Storyboarding and shot design',
         objective:
-          'Publish a campaign with real money behind it and a lead form that delivers to a destination you control.',
-        tools: ['Meta Ads Manager', 'Meta Pixel'],
+          'Storyboard a 30-second advertisement shot by shot before generating a single frame.',
+        tools: ['Claude', 'Canva'],
       },
       {
         n: 13,
-        title: 'Google Ads: Search campaign build',
+        title: 'Voice, sound and the edit',
         objective:
-          'Build a Search campaign with match types, negatives and ad groups mapped to your own keyword research.',
-        tools: ['Google Ads', 'Keyword Planner'],
+          'Cut picture to sound, add a voice track, and fix the timing problems that make AI video feel synthetic.',
+        tools: ['ElevenLabs', 'CapCut'],
       },
       {
         n: 14,
-        title: 'Reading the numbers, not the vibes',
+        title: 'The AI ad film, start to finish',
         objective:
-          'Diagnose a live campaign from its own data and make three changes you can defend out loud.',
-        tools: ['Google Ads', 'Meta Ads Manager', 'Looker Studio'],
+          'Produce a complete advertisement from brief to final cut, and defend every creative decision in it.',
+        tools: ['Runway', 'Kling', 'CapCut', 'ElevenLabs'],
       },
       {
         n: 15,
-        title: 'Creative testing and what scaling really means',
+        title: 'UGC-style ads and creator formats',
         objective:
-          'Run a structured creative test, then decide what to scale, what to cut and what to leave alone.',
-        tools: ['Meta Ads Manager', 'Canva'],
+          'Produce the vertical, spoken-to-camera formats that carry most paid social, using AI presenters.',
+        tools: ['HeyGen', 'CapCut'],
       },
     ],
   },
   {
     n: 4,
-    label: 'Week 4',
-    title: 'CRM, WhatsApp, automation, portfolio',
+    label: 'Stage 04',
+    title: 'Launch',
     summary:
-      'The part most courses skip. A lead is worth nothing until someone follows it up, so you build the pipeline, the follow-up and the automation that connects them, then present the whole stack as a portfolio.',
-    checkpoint: 'A lead flows from ad to CRM to WhatsApp without you touching it, and you present the case study.',
+      'Website, automation, live campaign and portfolio. Real budget, real auctions, real consequences, and the work assembled into something you can show.',
+    checkpoint: 'Live campaigns, an automation running without you, and your portfolio presented to the room.',
     sessions: [
       {
         n: 16,
-        title: 'CRM and the lead lifecycle',
+        title: 'The landing page',
         objective:
-          'Build a pipeline with real stages and push live leads into it from your ad forms automatically.',
-        tools: ['Zoho CRM', 'HubSpot'],
+          'Build and publish a landing page on your own domain, built around one conversion goal.',
+        tools: ['WordPress', 'Elementor', 'Framer'],
       },
       {
         n: 17,
-        title: 'WhatsApp and email follow-up that gets replies',
+        title: 'Tracking before traffic',
         objective:
-          'Write and schedule a five-touch follow-up sequence, then measure the reply rate it produced.',
-        tools: ['WhatsApp Business', 'Interakt', 'Brevo'],
+          'Install GA4 and Tag Manager, fire a lead event and prove it in DebugView before a rupee is spent.',
+        tools: ['GA4', 'Google Tag Manager', 'Meta Pixel'],
       },
       {
         n: 18,
-        title: 'Automation: wire the whole stack together',
+        title: 'Launch day',
         objective:
-          'Build an automation that moves a lead from ad to CRM to WhatsApp with no manual step in between.',
-        tools: ['Make', 'Zapier', 'n8n'],
+          'Publish live campaigns on Meta and Google with real money behind them, then read what comes back.',
+        tools: ['Meta Ads Manager', 'Google Ads'],
       },
       {
         n: 19,
-        title: 'Reporting and pricing your work',
+        title: 'Marketing automation',
         objective:
-          'Build a one-page client dashboard and quote a monthly retainer you can justify line by line.',
-        tools: ['Looker Studio', 'Google Sheets'],
+          'Wire a lead from ad to CRM to WhatsApp with no manual step, and watch one flow through end to end.',
+        tools: ['Make', 'n8n', 'Zoho CRM', 'WhatsApp Business'],
       },
       {
         n: 20,
-        title: 'Portfolio and final presentation',
+        title: 'Portfolio, pricing and the pitch',
         objective:
-          'Present your live stack as a portfolio case study: the site, the campaigns, the video, the CRM, the automation and the numbers.',
-        tools: ['Notion', 'Canva'],
+          'Present your campaign as a case study, and quote the work as a service you could sell on Monday.',
+        tools: ['Notion', 'Canva', 'Looker Studio'],
       },
     ],
   },
@@ -209,16 +209,132 @@ export const WEEKS: Week[] = [
 
 export const TOTAL_SESSIONS = WEEKS.reduce((n, w) => n + w.sessions.length, 0);
 
+/** Section 02 — what AI actually changed, as six things you will do. */
+export const PILLARS = [
+  { title: 'Research', body: 'Find what an audience actually wants, in an afternoon rather than a fortnight.' },
+  { title: 'Strategy', body: 'Turn what you found into decisions somebody can act on.' },
+  { title: 'Create', body: 'Generate campaigns, images and video that look like one brand.' },
+  { title: 'Automate', body: 'Hand the repetitive half of the job to something that does not get bored.' },
+  { title: 'Build', body: 'Ship the landing pages and systems the campaign runs on.' },
+  { title: 'Launch', body: 'Put real money behind it and read what comes back.' },
+] as const;
+
+/** Section 03 — the comparison. Left is the pattern, right is this course. */
+export const COMPARISON = {
+  them: { label: 'Most AI courses', steps: ['Watch', 'Learn tools', 'Copy prompts', 'Get certificate', 'Forget'] },
+  us: { label: 'Growthlearners', steps: ['Understand', 'Build', 'Get feedback', 'Create portfolio', 'Launch'] },
+};
+
+/**
+ * Section 05 — the cinematic gallery of student work.
+ *
+ * EMPTY ON PURPOSE. This is the section the whole direction rests on: the
+ * brief's own conclusion was that the product is sold by showing what people
+ * can create, and that the student outputs should be the visual identity.
+ *
+ * Nothing here can be stock, and nothing here can be a stand-in. A generated
+ * image that no student made, on a page selling what students make, is the one
+ * lie this page cannot survive. Add real work and the section renders itself.
+ *
+ * Assets go in public/work/. Landscape 16:9 for campaign stills and ad film
+ * frames, 4:5 or 9:16 for social and UGC. Video is fine: give `type: 'video'`
+ * an mp4 under 3MB and a poster frame.
+ */
+export type WorkItem = {
+  title: string;
+  /** "AI ad campaign", "Product photography", "Brand film". */
+  kind: string;
+  /** Who made it, and in which batch. Anonymous work proves nothing. */
+  student: string;
+  src: string;
+  type?: 'image' | 'video';
+  poster?: string;
+  /** Aspect for the grid. */
+  ratio?: '16/9' | '4/5' | '9/16' | '1/1';
+};
+
+export const WORK: WorkItem[] = [];
+
+/** Section 06 — you are the director, AI is the production engine. */
+export const PIPELINE = [
+  { step: 'Idea', note: 'Yours' },
+  { step: 'Creative brief', note: 'Yours' },
+  { step: 'Storyboard', note: 'Yours' },
+  { step: 'AI image', note: 'Directed' },
+  { step: 'AI motion', note: 'Directed' },
+  { step: 'Voice and sound', note: 'Directed' },
+  { step: 'Final advertisement', note: 'Yours' },
+] as const;
+
+/**
+ * Section 07 — the strip. Deliberately not a wall of 47 logos: the point of the
+ * section is that the list dates and the workflow does not.
+ */
+export const TOOL_STRIP = [
+  'ChatGPT', 'Claude', 'Gemini', 'Nano Banana', 'Midjourney', 'Canva',
+  'Kling', 'Runway', 'ElevenLabs', 'HeyGen', 'CapCut', 'Make', 'n8n',
+] as const;
+
+/** Section 08 — what is in the portfolio at the end. */
+export const PORTFOLIO = [
+  { n: 1, title: 'AI marketing research', note: 'Audience, market and competitor, on a real business.' },
+  { n: 2, title: '30-day content strategy', note: 'A calendar with a reason behind every slot.' },
+  { n: 3, title: 'Brand creative system', note: 'The rules that make generated work look like one brand.' },
+  { n: 4, title: 'AI advertising campaign', note: 'A full creative set built from one angle.' },
+  { n: 5, title: 'AI video advertisement', note: 'Storyboarded, generated, cut and scored.' },
+  { n: 6, title: 'Landing page', note: 'Live, on a domain in your name.' },
+  { n: 7, title: 'Marketing automation', note: 'Ad to CRM to WhatsApp, with nobody touching it.' },
+  { n: 8, title: 'Complete client campaign', note: 'All of it, running, with the numbers attached.' },
+];
+
+/** Section 09 — who this is for. */
+export const AUDIENCES = [
+  { who: 'Students', why: 'Leave with work to show, not a certificate to mention.' },
+  { who: 'Digital marketers', why: 'Do the same job in a fraction of the time, and take on the creative half.' },
+  { who: 'Creators', why: 'Produce more, and produce things you could not shoot.' },
+  { who: 'Designers', why: 'Move from making assets to directing them.' },
+  { who: 'Business owners', why: 'Build the marketing engine instead of renting it.' },
+  { who: 'Freelancers', why: 'Turn this into services you can price and sell.' },
+];
+
+/** Section 10 — the room is the point. */
+export const CLASSROOM = [
+  { title: 'Live demonstrations', body: 'You watch the work happen, at the speed it actually happens.' },
+  { title: 'Hands-on building', body: 'Roughly half of every session is you making something.' },
+  { title: 'Feedback in the room', body: 'Your work is looked at and told what is wrong with it, out loud.' },
+  { title: 'Small batch', body: 'Few enough people that nobody gets to sit quietly at the back.' },
+  { title: 'Peers to work with', body: 'You brief each other, and you review each other.' },
+  { title: 'Real projects', body: 'Everything you build is for a real business, not a made-up one.' },
+];
+
+/** Section 11 — the doors this opens. */
+export const CAREERS = [
+  { door: 'Get hired', roles: ['AI marketing specialist', 'Digital marketing executive', 'Content strategist', 'Performance marketer'] },
+  { door: 'Freelance', roles: ['AI content', 'Creative production', 'Video ads', 'Marketing automation'] },
+  { door: 'Build a business', roles: ['Agency', 'AI marketing services', 'Content studio'] },
+  { door: 'Build your brand', roles: ['Creator', 'Consultant', 'Educator'] },
+];
+
+/** Section 12 — services, framed as work you can sell rather than money promised. */
+export const SERVICES = [
+  'AI social media content',
+  'AI ad creative production',
+  'AI video advertisements',
+  'AI landing pages',
+  'Marketing automation',
+  'AI creative direction',
+];
+
 /** The eight things you walk out owning. Deliverables, not logos. */
 export const DELIVERABLES = [
-  'Live website',
-  'Ranked pages',
-  'Meta campaign',
-  'Google campaign',
+  'Research pack',
+  'Content strategy',
+  'Brand creative system',
+  'AI ad campaign',
   'AI video ad',
-  'CRM',
+  'Ad film',
+  'Landing page',
   'Automation',
-  'Client dashboard',
 ] as const;
 
 export const PROBLEM = {
@@ -387,35 +503,43 @@ export const FEE_INCLUDES = [
 
 export const FAQS = [
   {
-    q: 'Do I need a marketing background, or any coding?',
-    a: `Neither. Session 1 starts from what a funnel is. Nothing in the ${TOTAL_SESSIONS} sessions requires you to write code. You will use the same no-code tools working agencies use. What you do need is to turn up five evenings a week for a month.`,
+    q: 'Is this beginner-friendly?',
+    a: `Yes, and most of the room will be beginners. Session 1 starts from what the marketing job actually is. Nothing in the ${TOTAL_SESSIONS} sessions needs code, and nothing assumes you have run a campaign before. What it does need is that you turn up five evenings a week for a month and build things.`,
   },
   {
-    q: 'Can I join while I am still in college?',
-    a: `Yes, and most of the batch is. Sessions run ${SITE.timings.toLowerCase()}, deliberately after college hours. Final-year students with project work generally manage it; if your exam dates fall inside the batch, tell us before you enrol and we will tell you honestly whether to take the next one.`,
+    q: 'Is it really offline?',
+    a: `Entirely. ${SITE.timings}, in a room in ${SITE.city}, with the people teaching it in the same room. There is no recording to fall back on and no online cohort running alongside. That is the reason the batch is small.`,
   },
   {
-    q: 'Do I actually run real ad money, or is it a demo account?',
-    a: 'Real money, real auctions, in a live ad account. The ad budget is included in your fee. You will see spend, impressions, leads and a cost per lead that changes when you change something, and you will make those changes yourself in Week 3, not watch a recording of someone else making them.',
+    q: 'What laptop do I need?',
+    a: 'Anything from the last five or six years that runs Chrome without complaining. The generation happens on the tools\u2019 servers, not your machine, so you do not need a graphics card. Bring a charger and headphones. If your laptop is genuinely on its last legs, tell us before you enrol and we will tell you honestly whether it will cope.',
   },
   {
-    q: 'What exactly do I leave with?',
-    a: `Eight things you own: a live website on your own domain, pages optimised to rank, a Meta campaign, a Google campaign, an AI-generated video ad, a CRM with real leads in it, a working automation, and a client dashboard. Plus the logins. Nothing expires when the batch ends.`,
+    q: 'Which AI tools are included?',
+    a: 'Access to the paid tools used in class is included for the month. The list moves, because these tools move. What does not move is the workflow: brief, generate, direct, edit, ship. We teach when and why to reach for a tool, so that the next one to appear is something you can pick up in an afternoon.',
   },
   {
-    q: 'What are the batch timings?',
-    a: `${SITE.timings}, in person in ${SITE.city}. Each session is two hours and roughly half of it is you building, not listening. The batch runs for ${SITE.durationWeeks} weeks.`,
+    q: 'Do I need prior digital marketing experience?',
+    a: 'No. People arrive from design, from content, from a family business, and from nothing at all. The first week exists to put everyone on the same footing. If you already run campaigns, the AI production weeks are where you will get your money back.',
   },
   {
-    q: 'Is there a weekend batch?',
-    a: `Yes. ${SITE.weekendBatch}, covering the identical ${TOTAL_SESSIONS} sessions over the same four weeks. It suits people already working. Seats are limited the same way, so say which one you want when you enquire.`,
+    q: 'Will I build real projects?',
+    a: `Every session produces something, and every stage ends with a finished artefact. By day 30 you have eight of them, on a real business, including a live campaign with real spend behind it. That is the whole design of the course.`,
   },
   {
-    q: 'Why only 15 seats?',
-    a: 'Because in Week 3 someone has to sit with you while your campaign is live and your money is moving. Above roughly fifteen people that stops being possible and the course quietly turns into a lecture. We would rather run another batch.',
+    q: 'Will I get a certificate?',
+    a: 'Yes, and it names the campaigns you ran and the tools you shipped with rather than just a course title. But the certificate is the least valuable thing you leave with. The portfolio is the thing that gets you the interview.',
   },
   {
-    q: 'What if I miss a session?',
-    a: 'Tell us and we will schedule a catch-up before the next session, because the sessions build on each other: you cannot launch a campaign in Session 12 if you never installed the pixel in Session 5. There is no recording to fall back on; this is an in-person course by design.',
+    q: 'Can I freelance after the course?',
+    a: 'Session 20 covers exactly that: how to package the work as a service, what to charge, and how to pitch it. Several of the things you build during the month are sellable as they stand. Whether you get clients depends on you doing the asking, which no course can do for you.',
+  },
+  {
+    q: 'What happens after the course?',
+    a: 'You keep everything: the logins, the accounts, the work inside them and the portfolio. You get 30 days of WhatsApp support for the questions that only come up once you are on your own. The strongest two or three students in each batch are offered a paid internship with our agency team.',
+  },
+  {
+    q: `Why only ${SITE.seats} seats?`,
+    a: 'Because in Stage 03 and Stage 04 someone has to sit with you while your video is rendering wrong and your campaign is live and spending. Above roughly fifteen people that stops being possible and the course quietly turns into a lecture. We would rather run another batch.',
   },
 ];

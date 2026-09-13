@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react';
 import Wordmark from './ui/Wordmark';
 import WhatsAppCta from './ui/WhatsAppCta';
 
+// Every target here renders unconditionally. #work is deliberately absent:
+// the gallery hides itself until there is real student work, and a nav link
+// to a section that is not on the page is worse than one link fewer.
 const NAV = [
-  { href: '#the-month', label: 'The month' },
+  { href: '#the-month', label: 'The 30 days' },
+  { href: '#portfolio', label: 'What you build' },
   { href: '#curriculum', label: 'All 20 sessions' },
-  { href: '#stack', label: 'Stack' },
   { href: '#fee', label: 'Fee' },
   { href: '#faq', label: 'FAQ' },
 ];

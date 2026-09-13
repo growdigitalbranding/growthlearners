@@ -104,7 +104,7 @@ export default function TheMonth() {
     >
       <div className="shell w-full">
         <SectionHeading
-          title="Four weeks, and what changes in each"
+          title="30 days. 4 stages. One transformation."
           className="md:max-w-2xl"
         />
 
@@ -147,7 +147,7 @@ export default function TheMonth() {
               </ol>
 
               <p className="mt-auto flex flex-wrap gap-x-2 border-l-2 border-accent pl-4 pt-6 text-[0.875rem] text-muted">
-                <span className="font-medium text-ink">By Friday:</span>
+                <span className="font-medium text-ink">You leave with:</span>
                 {week.checkpoint}
               </p>
             </li>

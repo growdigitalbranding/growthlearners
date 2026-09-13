@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import SectionHeading from './SectionHeading';
-import { STACK, STACK_COUNT } from '@/lib/content';
+import { TOOL_STRIP } from '@/lib/content';
 
 /**
  * The one inverted section — it gives the scroll a spine, and it is the direct
@@ -81,40 +81,31 @@ export default function Stack() {
           tone="dark"
           title={
             <>
-              {STACK_COUNT} tools. <span className="text-bg/55">All of them yours on day 31.</span>
+              The tools are replaceable.{' '}
+              <span className="text-accent">The workflow isn&rsquo;t.</span>
             </>
           }
+          lead="Half of these did not exist two years ago and some will be gone in two more. What does not change is knowing what you are trying to make, and being able to tell when the machine has got it wrong."
         />
 
-        <div ref={root} className="mt-14 space-y-10">
-          {STACK.map((group) => (
-            <div
-              key={group.group}
-              className="grid gap-4 border-t border-white/10 pt-6 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-8"
+        <div ref={root} className="mt-14 flex flex-wrap gap-2.5">
+          {TOOL_STRIP.map((tool) => (
+            <span
+              key={tool}
+              data-chip
+              className="rounded-full border border-white/20 bg-white/[0.05] px-4 py-2
+                         font-sans text-[0.9375rem] text-bg/90"
             >
-              <h3 className="eyebrow text-bg/65">{group.group}</h3>
-              <ul className="flex flex-wrap gap-2.5">
-                {group.tools.map((tool) => (
-                  <li
-                    key={tool}
-                    data-chip
-                    className="rounded-full border border-white/20 bg-white/[0.05] px-4 py-2
-                               font-sans text-[0.9375rem] text-bg/90"
-                  >
-                    {tool}
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {tool}
+            </span>
           ))}
         </div>
 
-        <p className="mt-14 max-w-2xl text-lead text-bg/70">
-          Every tool here is one you keep after day 30.{' '}
-          <span className="text-bg">Nothing expires with your enrolment.</span> You leave with the
-          logins, the accounts and the work inside them, not a viewing pass that lapses when the
-          batch ends.
+        <p className="mt-12 max-w-2xl text-lead text-bg/70">
+          You keep every account you open during the month.{' '}
+          <span className="text-bg">Nothing expires with your enrolment.</span>
         </p>
+
       </div>
     </section>
   );

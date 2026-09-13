@@ -53,9 +53,12 @@ export default function Footer() {
           </h2>
           <ul className="space-y-2 text-[0.9375rem] text-muted">
             {[
-              { href: '#the-month', label: 'The month, week by week' },
+              { href: '#the-month', label: 'The 30 days, stage by stage' },
+              { href: '#portfolio', label: 'The eight things you build' },
               { href: '#curriculum', label: `All ${TOTAL_SESSIONS} sessions` },
               { href: '#stack', label: 'Tools you learn' },
+              { href: '#who', label: 'Who this is for' },
+              { href: '#careers', label: 'Where it leads' },
               { href: '#outcomes', label: 'Outcomes and placement' },
               { href: '#fee', label: 'Fee and what it covers' },
               { href: '#faq', label: 'Frequently asked questions' },

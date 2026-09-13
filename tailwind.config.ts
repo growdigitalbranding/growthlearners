@@ -5,8 +5,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: '#FAF7F2',
-        ink: '#121212',
+        bg: '#F7F7F5',
+        ink: '#0E0E0E',
         accent: '#FF4D2E',
         // Small accent text fails AA on paper at the signal orange (3.09:1).
         // accent-deep clears 4.94:1 there; accent-soft clears 5.30:1 on the
@@ -14,7 +14,10 @@ const config: Config = {
         // decorative marks, where it is not text.
         'accent-deep': '#C9340F',
         'accent-soft': '#FF8A70',
-        'accent-2': '#0B3D2E',
+        // Near-black, for the cinematic blocks. The imagery carries those
+        // sections; the surface only has to get out of its way.
+        'accent-2': '#0E0E0E',
+        'ink-2': '#141414',
         muted: '#6B6862',
         line: 'rgba(18,18,18,0.10)',
         'line-strong': 'rgba(18,18,18,0.18)',

@@ -15,10 +15,10 @@ import { TOTAL_SESSIONS } from '@/lib/content';
  * not existence.
  */
 const HEADLINE: string[][] = [
-  ['One', 'month.'],
-  ['Twenty', 'sessions.'],
-  ['Real', 'campaigns'],
-  ['you', 'ran.'],
+  ['What', 'if', 'you', 'could'],
+  ['build', 'an', 'entire'],
+  ['marketing', 'campaign'],
+  ['with', 'AI?'],
 ];
 
 export default function Hero() {
@@ -44,9 +44,9 @@ export default function Hero() {
           animate="visible"
           className="eyebrow mb-7 flex flex-wrap items-center gap-x-3 gap-y-1"
         >
-          AI Digital Marketing Course
+          AI Digital Marketing
           <span className="hidden text-line-strong sm:inline" aria-hidden>/</span>
-          <span>In person in {SITE.city}</span>
+          <span>{SITE.city}</span>
         </motion.p>
 
         <h1 className="hero-title max-w-[18ch] font-serif text-display">
@@ -54,7 +54,7 @@ export default function Hero() {
             {HEADLINE.map((line, lineIndex) => (
               <span key={lineIndex} className="block overflow-hidden pb-[0.08em]">
                 {line.map((word) => {
-                  const isAccent = word === 'you' || word === 'ran.';
+                  const isAccent = word === 'with' || word === 'AI?';
                   return (
                     <motion.span
                       key={word}
@@ -64,7 +64,7 @@ export default function Hero() {
                       {isAccent ? (
                         <span className="relative inline-block">
                           {word}
-                          {word === 'ran.' && (
+                          {word === 'AI?' && (
                             <motion.span
                               aria-hidden
                               initial={{ scaleX: 0 }}
@@ -95,15 +95,14 @@ export default function Hero() {
           className="mt-7 max-w-2xl sm:mt-8"
         >
           <motion.p variants={heroRise} className="text-lead text-muted">
-            For final-year students and fresh graduates in {SITE.city}. You finish with a live
-            website, live Google and Meta campaigns, an AI video ad, a CRM and an automation.
-            <span className="text-ink"> All of it yours to keep.</span>
+            Learn to research, strategize, create, automate and launch real digital campaigns
+            <span className="text-ink"> in 30 days.</span>
           </motion.p>
 
           <motion.div variants={heroRise} className="mt-8 flex flex-wrap items-center gap-3">
-            <WhatsAppCta location="hero" label="WhatsApp us" />
-            <a href="#curriculum" className="btn-ghost group">
-              See the {TOTAL_SESSIONS} sessions
+            <WhatsAppCta location="hero" label="Join the next batch" />
+            <a href="#portfolio" className="btn-ghost group">
+              See what you will make
               <span className="btn-icon-ghost">
                 <ArrowDown size={15} strokeWidth={2} aria-hidden />
               </span>
@@ -127,18 +126,24 @@ export default function Hero() {
           </span>
           {/* Each separator travels with the item that follows it, so a wrap
               never strands a lone middot at the end of a line. */}
-          <span className="text-ink">Next batch {batchStartDisplay}</span>
+          <span className="text-ink">{SITE.seats} seats</span>
           <span className="whitespace-nowrap">
             <span className="text-line-strong" aria-hidden>
               ·{' '}
             </span>
-            {SITE.seats} seats
+            {TOTAL_SESSIONS} live sessions
+          </span>
+          <span className="whitespace-nowrap">
+            <span className="text-line-strong" aria-hidden>
+              ·{' '}
+            </span>
+            Offline classroom
           </span>
           <span className="whitespace-nowrap tabular">
             <span className="text-line-strong" aria-hidden>
               ·{' '}
             </span>
-            {SITE.feeDisplay}
+            Next batch {batchStartDisplay}
           </span>
         </div>
       </motion.div>
