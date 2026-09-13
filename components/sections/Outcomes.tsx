@@ -13,7 +13,6 @@ export default function Outcomes() {
   return (
     <section id="outcomes" className="shell py-section">
       <SectionHeading
-        eyebrow="Outcomes"
         title="What we will and will not promise you"
         lead="Read this part carefully, and compare it with what you are told elsewhere. If a course guarantees you a job for a month's fee, ask them to put the guarantee in writing."
       />

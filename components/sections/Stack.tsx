@@ -78,7 +78,6 @@ export default function Stack() {
 
       <div className="shell relative">
         <SectionHeading
-          eyebrow="The stack"
           tone="dark"
           title={
             <>
@@ -113,7 +112,7 @@ export default function Stack() {
         <p className="mt-14 max-w-2xl text-lead text-bg/70">
           Every tool here is one you keep after day 30.{' '}
           <span className="text-bg">Nothing expires with your enrolment.</span> You leave with the
-          logins, the accounts and the work inside them — not a viewing pass that lapses when the
+          logins, the accounts and the work inside them, not a viewing pass that lapses when the
           batch ends.
         </p>
       </div>

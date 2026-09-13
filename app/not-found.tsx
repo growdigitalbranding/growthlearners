@@ -21,18 +21,13 @@ export default function NotFound() {
       <div className="shell flex flex-1 flex-col justify-center py-16">
         <Wordmark className="mb-12 text-[1.75rem]" />
 
-        <p className="eyebrow mb-5 flex items-center gap-3">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
-          Error 404
-        </p>
-
         <h1 className="max-w-[16ch] text-balance font-serif text-h2">
           That page isn&rsquo;t here.
         </h1>
 
         <p className="mt-6 max-w-xl text-lead text-muted">
           The link may be out of date, or the address mistyped. The course itself is one
-          page — all {TOTAL_SESSIONS} sessions, the fee and the batch dates are on it.
+          page. All {TOTAL_SESSIONS} sessions, the fee and the batch dates are on it.
         </p>
 
         <div className="mt-9 flex flex-wrap items-center gap-3">

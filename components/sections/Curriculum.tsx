@@ -16,13 +16,12 @@ export default function Curriculum() {
   return (
     <section id="curriculum" className="shell py-section">
       <SectionHeading
-        eyebrow={`All ${TOTAL_SESSIONS} sessions`}
         title={
           <>
             The whole syllabus. <span className="text-muted">Nothing held back.</span>
           </>
         }
-        lead="Open any session to see what you will be able to do by the end of it and the tools you will do it with. There is no bonus module and no locked content — this is the entire course."
+        lead="Open any session to see what you will be able to do by the end of it and the tools you will do it with. There is no bonus module and no locked content. This is the entire course."
       />
 
       <div className="mt-14 space-y-14">

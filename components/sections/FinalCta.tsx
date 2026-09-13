@@ -71,8 +71,7 @@ export default function FinalCta() {
       <div className="shell relative">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
-            <motion.p variants={reveal} className="eyebrow mb-5 flex items-center gap-3 text-bg/65">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+            <motion.p variants={reveal} className="eyebrow mb-5 text-bg/65">
               Next batch {batchStartDisplay}
             </motion.p>
             <motion.h2 variants={reveal} className="max-w-[16ch] font-serif text-h2 text-bg">
@@ -80,7 +79,7 @@ export default function FinalCta() {
             </motion.h2>
             <motion.p variants={reveal} className="mt-6 max-w-md text-lead text-bg/70">
               Message us on WhatsApp and you will get a straight answer from someone who teaches the
-              course — not a sales script. Bring your parents&rsquo; questions too.
+              course, not a sales script. Bring your parents&rsquo; questions too.
             </motion.p>
 
             <motion.div variants={reveal} className="mt-9">
@@ -117,7 +116,7 @@ export default function FinalCta() {
                 >
                   <Check size={20} strokeWidth={2.4} className="mt-0.5 shrink-0 text-accent" aria-hidden />
                   <span>
-                    Got it — we will call you within one working day. If you would rather not wait,
+                    Got it. We will call you within one working day. If you would rather not wait,
                     message us on WhatsApp.
                   </span>
                 </p>

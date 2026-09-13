@@ -44,7 +44,6 @@ export default function Hero() {
           animate="visible"
           className="eyebrow mb-7 flex flex-wrap items-center gap-x-3 gap-y-1"
         >
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
           AI Digital Marketing Course
           <span className="hidden text-line-strong sm:inline" aria-hidden>/</span>
           <span>In person in {SITE.city}</span>
@@ -97,8 +96,8 @@ export default function Hero() {
         >
           <motion.p variants={heroRise} className="text-lead text-muted">
             For final-year students and fresh graduates in {SITE.city}. You finish with a live
-            website, live Google and Meta campaigns, an AI video ad, a CRM and an automation —
-            <span className="text-ink"> all of it yours to keep.</span>
+            website, live Google and Meta campaigns, an AI video ad, a CRM and an automation.
+            <span className="text-ink"> All of it yours to keep.</span>
           </motion.p>
 
           <motion.div variants={heroRise} className="mt-8 flex flex-wrap items-center gap-3">

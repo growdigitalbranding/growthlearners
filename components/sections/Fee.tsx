@@ -11,7 +11,7 @@ import { SITE, batchStartDisplay } from '@/lib/site';
 export default function Fee() {
   return (
     <section id="fee" className="shell py-section">
-      <SectionHeading eyebrow="Fee" title="One number. Everything in it." />
+      <SectionHeading title="One number. Everything in it." />
 
       <motion.div
         variants={stagger}

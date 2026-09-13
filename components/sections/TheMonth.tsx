@@ -104,7 +104,6 @@ export default function TheMonth() {
     >
       <div className="shell w-full">
         <SectionHeading
-          eyebrow="The month"
           title="Four weeks, and what changes in each"
           className="md:max-w-2xl"
         />

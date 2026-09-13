@@ -17,9 +17,8 @@ export default function Faq() {
 
       <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
         <SectionHeading
-          eyebrow="Questions"
           title="The things people actually ask"
-          lead="If your question is not here, send it on WhatsApp — you will get a straight answer from someone who teaches the course."
+          lead="If your question is not here, send it on WhatsApp. You will get a straight answer from someone who teaches the course."
           className="lg:sticky lg:top-28 lg:self-start"
         />
 

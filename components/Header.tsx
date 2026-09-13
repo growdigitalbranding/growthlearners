@@ -113,7 +113,7 @@ export default function Header() {
         <a
           href="#top"
           className="-ml-1 flex min-h-[3rem] items-center px-1"
-          aria-label="Growthlearners — back to top"
+          aria-label="Growthlearners, back to top"
         >
           <Wordmark className="text-[1.75rem]" tone={inverted ? 'dark' : 'light'} />
         </a>

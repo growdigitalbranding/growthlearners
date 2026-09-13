@@ -22,7 +22,6 @@ export default function Proof() {
   return (
     <section id="proof" className="shell py-section">
       <SectionHeading
-        eyebrow="From the last batch"
         title="What people who finished it say"
         lead="Unedited, and each one names the batch they were in."
       />

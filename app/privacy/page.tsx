@@ -35,7 +35,7 @@ const SECTIONS = [
     heading: 'What we collect',
     body: [
       'If you use the callback form, we collect the three things it asks for: your name, your mobile number, and optionally your college or company. There are no other fields, and nothing is collected silently alongside them.',
-      'If you contact us on WhatsApp instead, we see whatever WhatsApp shows us — your number and your profile name. That conversation is held inside WhatsApp and governed by their terms as well as ours.',
+      'If you contact us on WhatsApp instead, we see whatever WhatsApp shows us: your number and your profile name. That conversation is held inside WhatsApp and governed by their terms as well as ours.',
     ],
   },
   {
@@ -48,16 +48,16 @@ const SECTIONS = [
   {
     heading: 'Analytics and advertising',
     body: [
-      'This site loads Google Tag Manager, which in turn loads Google Analytics 4 and the Meta Pixel. These record how the page is used — which sections are opened, which buttons are clicked, and whether a visit came from an advertisement.',
+      'This site loads Google Tag Manager, which in turn loads Google Analytics 4 and the Meta Pixel. These record how the page is used: which sections are opened, which buttons are clicked, and whether a visit came from an advertisement.',
       'They set cookies and may let Google and Meta recognise a browser across sites. That is how the advertising for this course is measured. Your browser settings, and the ad-preference controls Google and Meta each provide, let you limit this.',
-      'If you have asked your browser or phone to reduce motion, this page respects that too — that preference is read in the browser and never sent anywhere.',
+      'If you have asked your browser or phone to reduce motion, this page respects that too. That preference is read in the browser and never sent anywhere.',
     ],
   },
   {
     heading: 'Your choices',
     body: [
       'You can ask us what we hold about you, ask us to correct it, or ask us to delete it. Message the number below and we will do it.',
-      'Asking us to stop contacting you is enough — you do not have to give a reason, and it will not affect a course you have already enrolled in.',
+      'Asking us to stop contacting you is enough. You do not have to give a reason, and it will not affect a course you have already enrolled in.',
     ],
   },
 ];

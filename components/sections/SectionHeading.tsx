@@ -4,7 +4,14 @@ import { motion } from 'framer-motion';
 import { reveal, stagger, VIEWPORT } from '@/lib/motion';
 
 type Props = {
-  eyebrow: string;
+  /**
+   * Optional, and deliberately rare. An eyebrow above every section headline
+   * produces a templated rhythm that reads as machine-built, and mostly repeats
+   * what the headline already says. Only sections whose label carries real
+   * information the headline does not (what the product is, when the batch
+   * starts) get one.
+   */
+  eyebrow?: string;
   title: React.ReactNode;
   lead?: React.ReactNode;
   tone?: 'light' | 'dark';
@@ -29,13 +36,14 @@ export default function SectionHeading({
       viewport={VIEWPORT}
       className={className}
     >
-      <motion.p
-        variants={reveal}
-        className={`eyebrow mb-5 flex items-center gap-3 ${tone === 'dark' ? 'text-bg/65' : ''}`}
-      >
-        <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
-        {eyebrow}
-      </motion.p>
+      {eyebrow ? (
+        <motion.p
+          variants={reveal}
+          className={`eyebrow mb-5 ${tone === 'dark' ? 'text-bg/65' : ''}`}
+        >
+          {eyebrow}
+        </motion.p>
+      ) : null}
       <motion.h2
         variants={reveal}
         id={id}

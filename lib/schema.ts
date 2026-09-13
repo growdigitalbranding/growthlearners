@@ -64,7 +64,7 @@ export function buildSchema() {
     },
     hasCourseInstance: {
       '@type': 'CourseInstance',
-      name: `${SITE.courseName} — batch starting ${batchStartDisplay}`,
+      name: `${SITE.courseName}, batch starting ${batchStartDisplay}`,
       courseMode: 'Onsite',
       courseWorkload: 'P4W',
       startDate: SITE.batchStartISO,

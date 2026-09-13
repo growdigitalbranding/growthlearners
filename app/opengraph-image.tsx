@@ -3,7 +3,7 @@ import { SITE, batchStartDisplay } from '@/lib/site';
 import { TOTAL_SESSIONS } from '@/lib/content';
 
 export const runtime = 'nodejs';
-export const alt = `${SITE.courseName} in ${SITE.city} — ${TOTAL_SESSIONS} sessions, in person`;
+export const alt = `${SITE.courseName} in ${SITE.city}, ${TOTAL_SESSIONS} sessions, in person`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 

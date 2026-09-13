@@ -108,7 +108,7 @@ export const WEEKS: Week[] = [
       },
       {
         n: 10,
-        title: 'AI video ads — script, generate, cut',
+        title: 'AI video ads: script, generate, cut',
         objective:
           'Script and produce a 20-second vertical ad using AI generation plus a manual edit pass.',
         tools: ['HeyGen', 'Runway', 'CapCut', 'Canva'],
@@ -132,14 +132,14 @@ export const WEEKS: Week[] = [
       },
       {
         n: 12,
-        title: 'Launch day — your Meta campaign goes live',
+        title: 'Launch day: your Meta campaign goes live',
         objective:
           'Publish a campaign with real money behind it and a lead form that delivers to a destination you control.',
         tools: ['Meta Ads Manager', 'Meta Pixel'],
       },
       {
         n: 13,
-        title: 'Google Ads — Search campaign build',
+        title: 'Google Ads: Search campaign build',
         objective:
           'Build a Search campaign with match types, negatives and ad groups mapped to your own keyword research.',
         tools: ['Google Ads', 'Keyword Planner'],
@@ -165,7 +165,7 @@ export const WEEKS: Week[] = [
     label: 'Week 4',
     title: 'CRM, WhatsApp, automation, portfolio',
     summary:
-      'The part most courses skip. A lead is worth nothing until someone follows it up, so you build the pipeline, the follow-up and the automation that connects them — then present the whole stack as a portfolio.',
+      'The part most courses skip. A lead is worth nothing until someone follows it up, so you build the pipeline, the follow-up and the automation that connects them, then present the whole stack as a portfolio.',
     checkpoint: 'A lead flows from ad to CRM to WhatsApp without you touching it, and you present the case study.',
     sessions: [
       {
@@ -184,7 +184,7 @@ export const WEEKS: Week[] = [
       },
       {
         n: 18,
-        title: 'Automation — wire the whole stack together',
+        title: 'Automation: wire the whole stack together',
         objective:
           'Build an automation that moves a lead from ad to CRM to WhatsApp with no manual step in between.',
         tools: ['Make', 'Zapier', 'n8n'],
@@ -200,7 +200,7 @@ export const WEEKS: Week[] = [
         n: 20,
         title: 'Portfolio and final presentation',
         objective:
-          'Present your live stack — site, campaigns, video, CRM, automation and the numbers — as a portfolio case study.',
+          'Present your live stack as a portfolio case study: the site, the campaigns, the video, the CRM, the automation and the numbers.',
         tools: ['Notion', 'Canva'],
       },
     ],
@@ -279,7 +279,7 @@ export const OUTCOMES = [
   {
     title: 'No placement guarantee',
     body:
-      'We do not promise you a job, because nobody honestly can. What we promise is that you will finish with work you can show and numbers you can talk about — which is what actually gets you through an interview.',
+      'We do not promise you a job, because nobody honestly can. What we promise is that you will finish with work you can show and numbers you can talk about, which is what actually gets you through an interview.',
     tone: 'plain' as const,
   },
   {
@@ -347,7 +347,7 @@ export const FEE_INCLUDES = [
 export const FAQS = [
   {
     q: 'Do I need a marketing background, or any coding?',
-    a: `Neither. Session 1 starts from what a funnel is. Nothing in the ${TOTAL_SESSIONS} sessions requires you to write code — you will use the same no-code tools working agencies use. What you do need is to turn up five evenings a week for a month.`,
+    a: `Neither. Session 1 starts from what a funnel is. Nothing in the ${TOTAL_SESSIONS} sessions requires you to write code. You will use the same no-code tools working agencies use. What you do need is to turn up five evenings a week for a month.`,
   },
   {
     q: 'Can I join while I am still in college?',
@@ -355,7 +355,7 @@ export const FAQS = [
   },
   {
     q: 'Do I actually run real ad money, or is it a demo account?',
-    a: 'Real money, real auctions, in a live ad account. The ad budget is included in your fee. You will see spend, impressions, leads and a cost per lead that changes when you change something — and you will make those changes yourself in Week 3, not watch a recording of someone else making them.',
+    a: 'Real money, real auctions, in a live ad account. The ad budget is included in your fee. You will see spend, impressions, leads and a cost per lead that changes when you change something, and you will make those changes yourself in Week 3, not watch a recording of someone else making them.',
   },
   {
     q: 'What exactly do I leave with?',
@@ -367,7 +367,7 @@ export const FAQS = [
   },
   {
     q: 'Is there a weekend batch?',
-    a: `Yes — ${SITE.weekendBatch}, covering the identical ${TOTAL_SESSIONS} sessions over the same four weeks. It suits people already working. Seats are limited the same way, so say which one you want when you enquire.`,
+    a: `Yes. ${SITE.weekendBatch}, covering the identical ${TOTAL_SESSIONS} sessions over the same four weeks. It suits people already working. Seats are limited the same way, so say which one you want when you enquire.`,
   },
   {
     q: 'Why only 15 seats?',
@@ -375,6 +375,6 @@ export const FAQS = [
   },
   {
     q: 'What if I miss a session?',
-    a: 'Tell us and we will schedule a catch-up before the next session, because the sessions build on each other — you cannot launch a campaign in Session 12 if you never installed the pixel in Session 5. There is no recording to fall back on; this is an in-person course by design.',
+    a: 'Tell us and we will schedule a catch-up before the next session, because the sessions build on each other: you cannot launch a campaign in Session 12 if you never installed the pixel in Session 5. There is no recording to fall back on; this is an in-person course by design.',
   },
 ];
