@@ -22,6 +22,11 @@ const sans = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
+  // Not preloaded: the serif carries the headline and therefore LCP, and
+  // preloading both put 64kB of High-priority font bytes ahead of the
+  // render-blocking stylesheet. Inter swaps in over a metric-adjusted
+  // system fallback a moment later, which body copy can afford.
+  preload: false,
   fallback: ['system-ui', 'Segoe UI', 'Roboto', 'sans-serif'],
 });
 

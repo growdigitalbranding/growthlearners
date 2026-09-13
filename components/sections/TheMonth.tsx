@@ -127,7 +127,7 @@ export default function TheMonth() {
                          md:w-[min(28rem,62vw)] md:shrink-0 lg:w-[min(32rem,42vw)]"
             >
               <div className="flex items-baseline justify-between gap-4 border-b border-line pb-4">
-                <span className="eyebrow text-accent">{week.label}</span>
+                <span className="eyebrow text-accent-deep">{week.label}</span>
                 <span className="font-sans text-sm tabular text-muted">
                   {String(week.sessions[0].n).padStart(2, '0')}–
                   {String(week.sessions[week.sessions.length - 1].n).padStart(2, '0')}

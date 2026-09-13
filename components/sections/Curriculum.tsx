@@ -38,7 +38,7 @@ export default function Curriculum() {
               variants={reveal}
               className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b-2 border-ink pb-4"
             >
-              <span className="eyebrow text-accent">{week.label}</span>
+              <span className="eyebrow text-accent-deep">{week.label}</span>
               <h3 className="font-serif text-h3">{week.title}</h3>
               <span className="ml-auto font-sans text-sm tabular text-muted">
                 Sessions {week.sessions[0].n}–{week.sessions[week.sessions.length - 1].n}
@@ -56,7 +56,7 @@ export default function Curriculum() {
                   onOpen={() => track({ event: 'curriculum_open', session: session.n, title: session.title })}
                   summary={
                     <span className="flex items-baseline gap-4 sm:gap-6">
-                      <span className="w-7 shrink-0 font-sans text-sm tabular text-accent sm:w-9">
+                      <span className="w-7 shrink-0 font-sans text-sm tabular text-accent-deep sm:w-9">
                         {String(session.n).padStart(2, '0')}
                       </span>
                       <span className="font-serif text-[1.25rem] leading-snug sm:text-[1.5rem]">

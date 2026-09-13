@@ -31,7 +31,7 @@ export default function SectionHeading({
     >
       <motion.p
         variants={reveal}
-        className={`eyebrow mb-5 flex items-center gap-3 ${tone === 'dark' ? 'text-bg/55' : ''}`}
+        className={`eyebrow mb-5 flex items-center gap-3 ${tone === 'dark' ? 'text-bg/65' : ''}`}
       >
         <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
         {eyebrow}

@@ -12,11 +12,11 @@ export default function Wordmark({
   tone?: 'light' | 'dark';
 }) {
   return (
-    <span
-      className={`font-serif lowercase leading-none tracking-[-0.02em] ${className}`}
-      // One accessible name, so screen readers don't announce two fragments.
-      aria-label="Growthlearners"
-    >
+    <span className={`font-serif lowercase leading-none tracking-[-0.02em] ${className}`}>
+      {/* The name is real text, read once, rather than an aria-label — which is
+          prohibited on a <span> because it carries no role. The two coloured
+          halves are hidden so it is not announced as two fragments. */}
+      <span className="sr-only">Growthlearners</span>
       <span aria-hidden className="text-accent">growth</span>
       <span aria-hidden className={tone === 'dark' ? 'text-bg' : 'text-ink'}>learners</span>
     </span>

@@ -48,7 +48,11 @@ export default function Header() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-500 ${shellTone}`}>
       <div className="shell flex h-[4.5rem] items-center justify-between gap-4">
-        <a href="#top" className="flex items-center" aria-label="Growthlearners — back to top">
+        <a
+          href="#top"
+          className="-ml-1 flex min-h-[3rem] items-center px-1"
+          aria-label="Growthlearners — back to top"
+        >
           <Wordmark className="text-[1.75rem]" tone={inverted ? 'dark' : 'light'} />
         </a>
 

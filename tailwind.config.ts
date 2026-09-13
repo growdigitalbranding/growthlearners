@@ -8,6 +8,12 @@ const config: Config = {
         bg: '#FAF7F2',
         ink: '#121212',
         accent: '#FF4D2E',
+        // Small accent text fails AA on paper at the signal orange (3.09:1).
+        // accent-deep clears 4.94:1 there; accent-soft clears 5.30:1 on the
+        // deep green. The signal orange itself is kept for fills, rules and
+        // decorative marks, where it is not text.
+        'accent-deep': '#C9340F',
+        'accent-soft': '#FF8A70',
         'accent-2': '#0B3D2E',
         muted: '#6B6862',
         line: 'rgba(18,18,18,0.10)',

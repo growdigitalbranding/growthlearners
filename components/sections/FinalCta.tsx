@@ -58,7 +58,7 @@ export default function FinalCta() {
 
   const inputClass =
     'min-h-[3rem] w-full rounded-xl border border-white/20 bg-white/[0.06] px-4 py-3 text-bg ' +
-    'placeholder:text-bg/40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent';
+    'placeholder:text-bg/55 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent';
 
   return (
     <section
@@ -71,7 +71,7 @@ export default function FinalCta() {
       <div className="shell relative">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
-            <motion.p variants={reveal} className="eyebrow mb-5 flex items-center gap-3 text-bg/55">
+            <motion.p variants={reveal} className="eyebrow mb-5 flex items-center gap-3 text-bg/65">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
               Next batch {batchStartDisplay}
             </motion.p>
@@ -90,7 +90,7 @@ export default function FinalCta() {
                 className="btn-accent w-full !min-h-[3.5rem] text-base sm:w-auto sm:!px-8"
                 iconSize={20}
               />
-              <p className="mt-4 text-sm text-bg/55">
+              <p className="mt-4 text-sm text-bg/65">
                 Prefer to talk?{' '}
                 <a
                   href={telLink}
@@ -106,7 +106,7 @@ export default function FinalCta() {
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
             <div className="rounded-2xl border border-white/15 bg-white/[0.03] p-7 sm:p-8">
               <h3 className="font-serif text-h3 text-bg">Or ask us to call you</h3>
-              <p className="mt-3 text-[0.9375rem] text-bg/60">
+              <p className="mt-3 text-[0.9375rem] text-bg/65">
                 Three fields. We will call within one working day.
               </p>
 
@@ -139,7 +139,7 @@ export default function FinalCta() {
                       placeholder="Priya R"
                     />
                     {fieldErrors.name && (
-                      <p id="name-error" className="mt-2 text-sm text-accent">
+                      <p id="name-error" className="mt-2 text-sm text-accent-soft">
                         {fieldErrors.name}
                       </p>
                     )}
@@ -162,7 +162,7 @@ export default function FinalCta() {
                       placeholder="98765 43210"
                     />
                     {fieldErrors.mobile && (
-                      <p id="mobile-error" className="mt-2 text-sm text-accent">
+                      <p id="mobile-error" className="mt-2 text-sm text-accent-soft">
                         {fieldErrors.mobile}
                       </p>
                     )}
@@ -171,7 +171,7 @@ export default function FinalCta() {
                   <div>
                     <label htmlFor="org" className="mb-2 block text-sm text-bg/70">
                       College or company{' '}
-                      <span className="text-bg/40">(optional)</span>
+                      <span className="text-bg/60">(optional)</span>
                     </label>
                     <input
                       id="org"
@@ -190,7 +190,7 @@ export default function FinalCta() {
                   </div>
 
                   {formError && (
-                    <p role="alert" className="text-sm text-accent">
+                    <p role="alert" className="text-sm text-accent-soft">
                       {formError}
                     </p>
                   )}

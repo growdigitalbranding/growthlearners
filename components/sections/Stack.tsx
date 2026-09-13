@@ -82,7 +82,7 @@ export default function Stack() {
           tone="dark"
           title={
             <>
-              {STACK_COUNT} tools. <span className="text-bg/45">All of them yours on day 31.</span>
+              {STACK_COUNT} tools. <span className="text-bg/55">All of them yours on day 31.</span>
             </>
           }
         />
@@ -93,7 +93,7 @@ export default function Stack() {
               key={group.group}
               className="grid gap-4 border-t border-white/10 pt-6 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-8"
             >
-              <h3 className="eyebrow text-bg/50">{group.group}</h3>
+              <h3 className="eyebrow text-bg/65">{group.group}</h3>
               <ul className="flex flex-wrap gap-2.5">
                 {group.tools.map((tool) => (
                   <li

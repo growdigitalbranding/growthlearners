@@ -54,7 +54,7 @@ export default function Disclosure({ summary, children, onOpen, className = '', 
             strokeWidth={2}
             aria-hidden
             className={`mr-1 shrink-0 transition-transform duration-300 ease-editorial
-                        ${tone === 'dark' ? 'text-bg/50' : 'text-muted'} ${open ? 'rotate-180 text-accent' : ''}`}
+                        ${tone === 'dark' ? 'text-bg/65' : 'text-muted'} ${open ? 'rotate-180 text-accent-deep' : ''}`}
           />
         </button>
       </h3>

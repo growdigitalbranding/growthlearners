@@ -74,6 +74,23 @@ export const headlineGroup: Variants = {
   visible: { transition: { staggerChildren: 0.055 } },
 };
 
+/**
+ * Hero body copy. Transform-only, for the same reason as the headline: the
+ * sub-headline is the largest text block above the fold and therefore the LCP
+ * element, so it must be painted at full contrast in the first frame rather
+ * than fading in once React has hydrated. Nothing above the fold is allowed to
+ * animate its existence — only its arrival.
+ */
+export const heroRise: Variants = {
+  hidden: { y: 18 },
+  visible: { y: 0, transition: { duration: 0.65, ease: EASE_OUT } },
+};
+
+export const heroGroup: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: STAGGER, delayChildren: 0.1 } },
+};
+
 /** `underline` — accent line draws left-to-right as the phrase enters. */
 export const underline: Variants = {
   hidden: { scaleX: 0 },

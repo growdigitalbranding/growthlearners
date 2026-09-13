@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import Parallax from '../ui/Parallax';
 import WhatsAppCta from '../ui/WhatsAppCta';
-import { headlineGroup, headlineWord, reveal, stagger } from '@/lib/motion';
+import { headlineGroup, headlineWord, heroGroup, heroRise } from '@/lib/motion';
 import { SITE, batchStartDisplay } from '@/lib/site';
 import { TOTAL_SESSIONS } from '@/lib/content';
 
@@ -39,9 +39,9 @@ export default function Hero() {
 
       <div className="hero-body shell flex flex-1 flex-col justify-center py-10 sm:py-12">
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          variants={heroRise}
+          initial="hidden"
+          animate="visible"
           className="eyebrow mb-7 flex flex-wrap items-center gap-x-3 gap-y-1"
         >
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
@@ -90,19 +90,18 @@ export default function Hero() {
 
         {/* The underline spans both words, so it is drawn once across the phrase. */}
         <motion.div
-          variants={stagger}
+          variants={heroGroup}
           initial="hidden"
           animate="visible"
-          transition={{ delayChildren: 0.45 }}
           className="mt-7 max-w-2xl sm:mt-8"
         >
-          <motion.p variants={reveal} className="text-lead text-muted">
+          <motion.p variants={heroRise} className="text-lead text-muted">
             For final-year students and fresh graduates in {SITE.city}. You finish with a live
             website, live Google and Meta campaigns, an AI video ad, a CRM and an automation —
             <span className="text-ink"> all of it yours to keep.</span>
           </motion.p>
 
-          <motion.div variants={reveal} className="mt-8 flex flex-wrap items-center gap-3">
+          <motion.div variants={heroRise} className="mt-8 flex flex-wrap items-center gap-3">
             <WhatsAppCta location="hero" label="WhatsApp us" />
             <a href="#curriculum" className="btn-ghost">
               See the {TOTAL_SESSIONS} sessions
@@ -114,9 +113,10 @@ export default function Hero() {
 
       {/* Live status, sitting on the fold edge. */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.1 }}
+        variants={heroRise}
+        initial="hidden"
+        animate="visible"
+        transition={{ delay: 0.3 }}
         className="hairline"
       >
         <div className="shell flex flex-wrap items-center gap-x-3 gap-y-1 py-4 font-sans text-[0.8125rem] text-muted sm:py-5">
@@ -124,11 +124,21 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
           </span>
+          {/* Each separator travels with the item that follows it, so a wrap
+              never strands a lone middot at the end of a line. */}
           <span className="text-ink">Next batch {batchStartDisplay}</span>
-          <span className="text-line-strong" aria-hidden>·</span>
-          <span>{SITE.seats} seats</span>
-          <span className="text-line-strong" aria-hidden>·</span>
-          <span className="tabular">{SITE.feeDisplay}</span>
+          <span className="whitespace-nowrap">
+            <span className="text-line-strong" aria-hidden>
+              ·{' '}
+            </span>
+            {SITE.seats} seats
+          </span>
+          <span className="whitespace-nowrap tabular">
+            <span className="text-line-strong" aria-hidden>
+              ·{' '}
+            </span>
+            {SITE.feeDisplay}
+          </span>
         </div>
       </motion.div>
     </section>
