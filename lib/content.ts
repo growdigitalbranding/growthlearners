@@ -296,6 +296,47 @@ export const OUTCOMES = [
   },
 ];
 
+export type Teacher = {
+  name: string;
+  /** "Performance marketing lead, Growthlearners" — a real title, not a vibe. */
+  role: string;
+  /**
+   * What they have actually run, in specifics a student could check. Numbers,
+   * platforms, industries. "10+ years of experience" tells a reader nothing
+   * and reads as filler; "runs Meta and Google for six Coimbatore builders,
+   * about 40 lakh a year in ad spend" is the sentence that earns trust.
+   */
+  credential: string;
+  /** Which sessions this person actually takes. */
+  teaches: string;
+  /** Optional real photo at /public/team/<file>. Never stock. */
+  photo?: string;
+};
+
+/**
+ * ─────────────────────────────────────────────────────────────────────────────
+ *  EMPTY ON PURPOSE — this is the biggest trust gap on the page
+ * ─────────────────────────────────────────────────────────────────────────────
+ *  The page currently promises, twice, "a straight answer from someone who
+ *  teaches the course" — and never says who that is. A parent being asked for
+ *  ₹18,999 for an in-person course wants a name, a face, and something they
+ *  can check. This is the single highest-value thing you can add, worth more
+ *  than any visual change to the page.
+ *
+ *  Add one entry and the section renders itself, between the honest outcomes
+ *  and the fee, which is exactly where a reader is deciding whether to believe
+ *  what they just read.
+ *
+ *  Write the credential as something checkable. Not "expert in performance
+ *  marketing" — rather what they run, for whom, at what scale. If a claim
+ *  cannot be backed up when a parent rings and asks, do not put it here.
+ *
+ *  Photos go in /public/team/ and must be real people from the team. A stock
+ *  portrait on a page about a room you sit in is worse than no photo.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+export const TEACHERS: Teacher[] = [];
+
 export type Testimonial = {
   /** What they said. One or two sentences beats a paragraph. */
   quote: string;

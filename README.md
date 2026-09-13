@@ -202,6 +202,31 @@ Two further rules the page depends on:
   through JS meant measuring content and driving a pixel height per frame,
   28 rows deep.
 
+### Run this before any deploy
+
+```bash
+npm run preflight
+```
+
+It checks the things a visitor can see and the things that silently do nothing:
+placeholder phone and address, an unnamed teaching team, no testimonials, no
+GTM container, no callback webhook, and a batch date that has gone stale. It
+exits non-zero on blockers, so it can gate a build. The page being finished and
+the facts on it being right are two different states, and only one of them is
+visible in a screenshot.
+
+### Who teaches it
+
+`TEACHERS` in `lib/content.ts` is **empty on purpose**, and it is the largest
+trust gap on the page. The copy twice promises "a straight answer from someone
+who teaches the course" without ever saying who that is. A parent being asked
+for the fee wants a name, a face and something checkable.
+
+Write the credential as something a parent could verify on a phone call. Not
+"expert in performance marketing" but what they run, for whom, at what scale.
+Photos go in `public/team/` and must be real people. Stock portraits on a page
+about a room you physically sit in are worse than no photo at all.
+
 ### Still needed before launch
 
 The privacy notice at `/privacy` describes what the code actually does, but it
