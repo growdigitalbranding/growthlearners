@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import SectionHeading from './SectionHeading';
 import { TEACHERS } from '@/lib/content';
+import SampleBadge from '../ui/SampleBadge';
 import { reveal, stagger, VIEWPORT } from '@/lib/motion';
 import { SITE } from '@/lib/site';
 
@@ -28,6 +29,12 @@ export default function Teachers() {
         title="Who teaches it"
         lead={`The same people who run campaigns for paying clients out of ${SITE.city}. You will be in a room with them for ${SITE.sessions} evenings, not watching them on a screen.`}
       />
+
+      {TEACHERS.some((teacher) => teacher.placeholder) && (
+        <div className="mt-8">
+          <SampleBadge />
+        </div>
+      )}
 
       <motion.ul
         variants={stagger}

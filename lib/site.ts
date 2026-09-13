@@ -44,7 +44,10 @@ export const SITE = {
   region: 'Tamil Nadu',
   country: 'IN',
   postalCode: '641004',
-  streetAddress: 'RS Puram, Coimbatore',
+  // Shaped like a real address so the footer and schema lay out correctly,
+  // and worded so it can never be mistaken for one. Invented building names
+  // are somebody's real address somewhere, so this stays obviously blank.
+  streetAddress: 'Floor, building and street — replace before launch, RS Puram',
   mapUrl: 'https://maps.google.com/?q=Growthlearners+Coimbatore',
   geo: { lat: 11.0168, lng: 76.9558 },
 

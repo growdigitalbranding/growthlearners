@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import SectionHeading from './SectionHeading';
 import { TESTIMONIALS } from '@/lib/content';
+import SampleBadge from '../ui/SampleBadge';
 import { reveal, stagger, VIEWPORT } from '@/lib/motion';
 
 /**
@@ -25,6 +26,12 @@ export default function Proof() {
         title="What people who finished it say"
         lead="Unedited, and each one names the batch they were in."
       />
+
+      {TESTIMONIALS.some((item) => item.placeholder) && (
+        <div className="mt-8">
+          <SampleBadge />
+        </div>
+      )}
 
       <motion.ul
         variants={stagger}

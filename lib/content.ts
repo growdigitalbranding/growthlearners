@@ -251,9 +251,20 @@ export type WorkItem = {
   poster?: string;
   /** Aspect for the grid. */
   ratio?: '16/9' | '4/5' | '9/16' | '1/1';
+  /** Sample entry. Delete the flag when the row becomes real. */
+  placeholder?: boolean;
 };
 
-export const WORK: WorkItem[] = [];
+export const WORK: WorkItem[] = [
+  { title: 'Kovai Silks, festival campaign', kind: 'AI ad campaign', student: 'Sample entry', src: '/work/campaign-01.svg', ratio: '4/5', placeholder: true },
+  { title: 'Cold brew, studio set', kind: 'Product photography', student: 'Sample entry', src: '/work/product-01.svg', ratio: '1/1', placeholder: true },
+  { title: 'Saravanampatti launch', kind: 'Real estate creative', student: 'Sample entry', src: '/work/realestate-01.svg', ratio: '4/5', placeholder: true },
+  { title: 'Thirty days of posts', kind: 'Social campaign', student: 'Sample entry', src: '/work/social-01.svg', ratio: '4/5', placeholder: true },
+  { title: 'Nine-second hook', kind: 'AI reel', student: 'Sample entry', src: '/work/reel-01.svg', ratio: '9/16', placeholder: true },
+  { title: 'The workshop film', kind: 'Brand film', student: 'Sample entry', src: '/work/film-01.svg', ratio: '16/9', placeholder: true },
+  { title: 'Unboxing, vertical cut', kind: 'UGC-style ad', student: 'Sample entry', src: '/work/ugc-01.svg', ratio: '9/16', placeholder: true },
+  { title: 'Clinic booking page', kind: 'Landing page', student: 'Sample entry', src: '/work/landing-01.svg', ratio: '16/9', placeholder: true },
+];
 
 /** Section 06 — you are the director, AI is the production engine. */
 export const PIPELINE = [
@@ -427,6 +438,8 @@ export type Teacher = {
   teaches: string;
   /** Optional real photo at /public/team/<file>. Never stock. */
   photo?: string;
+  /** Sample entry. Delete the flag when the row becomes real. */
+  placeholder?: boolean;
 };
 
 /**
@@ -451,7 +464,32 @@ export type Teacher = {
  *  portrait on a page about a room you sit in is worse than no photo.
  * ─────────────────────────────────────────────────────────────────────────────
  */
-export const TEACHERS: Teacher[] = [];
+export const TEACHERS: Teacher[] = [
+  {
+    name: 'Sample entry, replace me',
+    role: 'Performance marketing lead, Growthlearners',
+    credential:
+      'Write what this person actually runs, for whom, at what scale. Something a parent could check on a phone call. Not "expert in performance marketing".',
+    teaches: 'Stage 04, sessions 16 to 20',
+    placeholder: true,
+  },
+  {
+    name: 'Sample entry, replace me',
+    role: 'Creative director, Growthlearners',
+    credential:
+      'Same here. Campaigns shipped, brands worked with, formats produced. Specifics are the whole point of this section.',
+    teaches: 'Stage 02 and Stage 03, sessions 6 to 15',
+    placeholder: true,
+  },
+  {
+    name: 'Sample entry, replace me',
+    role: 'Strategy, Growthlearners',
+    credential:
+      'A third is optional. Two people with real credentials beat three with vague ones.',
+    teaches: 'Stage 01, sessions 1 to 5',
+    placeholder: true,
+  },
+];
 
 export type Testimonial = {
   /** What they said. One or two sentences beats a paragraph. */
@@ -461,8 +499,10 @@ export type Testimonial = {
   role: string;
   /** Which batch, so the reader can date it. */
   batch: string;
-  /** Optional: the concrete thing they can point at — a live site, a result. */
+  /** Optional: the concrete thing they can point at, a live site or a result. */
   result?: string;
+  /** Sample entry. Delete the flag when the row becomes real. */
+  placeholder?: boolean;
 };
 
 /**
@@ -488,7 +528,33 @@ export type Testimonial = {
  *  real, which is the entire point of the section.
  * ─────────────────────────────────────────────────────────────────────────────
  */
-export const TESTIMONIALS: Testimonial[] = [];
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      'Replace this with a real quote from your first batch. Keep it verbatim, including the bits that are not polished. The unpolished ones are what read as real.',
+    name: 'Sample entry, replace me',
+    role: 'Final-year student',
+    batch: 'Batch 01',
+    result: 'What they can point at. A live page, a campaign, a number.',
+    placeholder: true,
+  },
+  {
+    quote:
+      'The second most valuable quote is from someone who got an interview or a client off the back of the course. Ask them what changed.',
+    name: 'Sample entry, replace me',
+    role: 'Graduate',
+    batch: 'Batch 01',
+    placeholder: true,
+  },
+  {
+    quote:
+      'The most valuable one is from a parent who paid. This page is read by parents, and one of them saying it was worth the money does more than three student quotes.',
+    name: 'Sample entry, replace me',
+    role: 'Parent',
+    batch: 'Batch 01',
+    placeholder: true,
+  },
+];
 
 export const FEE_INCLUDES = [
   `All ${TOTAL_SESSIONS} sessions, in person, in ${SITE.city}`,

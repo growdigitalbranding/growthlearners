@@ -202,6 +202,26 @@ Two further rules the page depends on:
   through JS meant measuring content and driving a pixel height per frame,
   28 rows deep.
 
+### Replacing the sample content
+
+Three sections ship with sample rows so the layout can be judged with content
+in it. Every sample row carries `placeholder: true`, and while any remain the
+section renders a visible **"Sample content, not yet replaced"** badge and
+`npm run preflight` fails.
+
+| What | Where | To replace |
+|---|---|---|
+| Gallery, 8 items | `WORK` in `lib/content.ts`, tiles in `public/work/` | Drop real files in `public/work/`, point `src` at them, delete the flag |
+| Teaching team, 3 | `TEACHERS` | Real names, roles, and credentials a parent could check on a phone call |
+| Testimonials, 3 | `TESTIMONIALS` | Verbatim quotes. Do not tidy the English |
+| Address | `SITE.streetAddress` | Must match your Google Business Profile exactly, it feeds JSON-LD |
+| Phone, GTM, webhook | `.env.local` | `cp .env.example .env.local` and fill it in |
+
+The gallery tiles are generated, not photographed: `node scripts/make-placeholders.mjs`
+rewrites them if you change the list. They are deliberately flat slots rather
+than stock imagery, because on a page whose entire claim is *look what students
+made*, a photograph no student took is the one lie it cannot survive.
+
 ### Run this before any deploy
 
 ```bash

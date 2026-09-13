@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import SectionHeading from './SectionHeading';
 import { WORK } from '@/lib/content';
+import SampleBadge from '../ui/SampleBadge';
 import { reveal, stagger, VIEWPORT_TALL } from '@/lib/motion';
 
 /**
@@ -32,6 +33,11 @@ export default function Work() {
           title="Look what you'll create"
           lead="Every piece below was made by a student during the month, from their own brief."
         />
+        {WORK.some((item) => item.placeholder) && (
+          <div className="mt-8">
+            <SampleBadge tone="dark" />
+          </div>
+        )}
       </div>
 
       <motion.ul
@@ -39,13 +45,14 @@ export default function Work() {
         initial="hidden"
         whileInView="visible"
         viewport={VIEWPORT_TALL}
-        className="shell mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        className="shell mt-14 columns-1 gap-4 sm:columns-2 lg:columns-3 [&>li]:mb-4"
       >
         {WORK.map((item) => (
           <motion.li
             key={item.title}
             variants={reveal}
-            className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]"
+            className="group relative break-inside-avoid overflow-hidden rounded-xl
+                       border border-white/10 bg-white/[0.03]"
           >
             <div style={{ aspectRatio: item.ratio ?? '4/5' }} className="w-full overflow-hidden">
               {item.type === 'video' ? (
