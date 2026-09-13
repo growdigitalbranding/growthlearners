@@ -227,7 +227,7 @@ export const PROBLEM = {
     items: [
       'Recorded videos you watch at 2x and never open again.',
       'A certificate PDF with your name in a template font.',
-      'A "capstone project" that is a slide deck about a campaign.',
+      'A “capstone project” that is a slide deck about a campaign.',
       'Demo dashboards and sandbox accounts that expire with your enrolment.',
       'No login, anywhere, to anything real.',
     ],
@@ -235,11 +235,11 @@ export const PROBLEM = {
   right: {
     eyebrow: 'What the person hiring you asks',
     items: [
-      '"What have you actually run?"',
-      '"What was your cost per lead, and what did you do when it went up?"',
-      '"Can you open the ad account and show me?"',
-      '"Who did you write this copy for, and did it work?"',
-      '"Something broke mid-campaign. Walk me through what you did."',
+      "“What have you actually run?”",
+      "“What was your cost per lead, and what did you do when it went up?”",
+      "“Can you open the ad account and show me?”",
+      "“Who did you write this copy for, and did it work?”",
+      "“Something broke mid-campaign. Walk me through what you did.”",
     ],
   },
 };
