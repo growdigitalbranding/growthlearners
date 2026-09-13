@@ -10,7 +10,8 @@ import type { Transition, Variants } from 'framer-motion';
  *    layout animation from every variant below, leaving opacity. So `reveal`
  *    degrades to a plain fade with no extra code per section.
  *  - Anything driven imperatively (GSAP, Lenis, magnetic, counters) checks
- *    `prefersReducedMotion()` or the useReducedMotion() hook directly.
+ *    useReducedMotion(), or is created inside a gsap.matchMedia() query that
+ *    excludes reduced motion, so it never exists in the first place.
  */
 
 export const EASE_OUT = [0.16, 1, 0.3, 1] as const;
@@ -46,13 +47,6 @@ export const stagger: Variants = {
   hidden: {},
   visible: {
     transition: { staggerChildren: STAGGER, delayChildren: 0.05 },
-  },
-};
-
-export const staggerFast: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.04 },
   },
 };
 
@@ -115,12 +109,6 @@ export const accordionPanel: Variants = {
     transition: { height: { duration: 0.34, ease: EASE_OUT }, opacity: { duration: 0.22, delay: 0.06 } },
   },
 };
-
-/** Cheap SSR-safe check for imperative animation (GSAP, counters, magnetic). */
-export function prefersReducedMotion(): boolean {
-  if (typeof window === 'undefined' || !window.matchMedia) return false;
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
 
 /** Magnetic and parallax are desktop-only — disabled below 768px. */
 export const DESKTOP_QUERY = '(min-width: 768px)';

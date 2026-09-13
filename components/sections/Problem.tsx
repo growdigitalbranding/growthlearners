@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { Check, X } from 'lucide-react';
+import DrawUnderline from '../ui/DrawUnderline';
 import { PROBLEM } from '@/lib/content';
 import { slideFrom, stagger, VIEWPORT } from '@/lib/motion';
 
@@ -72,7 +73,11 @@ export default function Problem() {
       </div>
 
       <p className="mt-8 max-w-3xl text-lead text-muted">
-        Every session in this course is built backwards from that second column.
+        Every session in this course is built backwards from{' '}
+        <DrawUnderline weight={2} className="text-ink">
+          that second column
+        </DrawUnderline>
+        .
       </p>
     </section>
   );
