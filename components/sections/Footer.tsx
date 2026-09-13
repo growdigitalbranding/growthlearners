@@ -51,7 +51,7 @@ export default function Footer() {
           <h2 id="footer-course" className="eyebrow mb-5">
             The course
           </h2>
-          <ul className="space-y-1 text-[0.9375rem] text-muted">
+          <ul className="space-y-2 text-[0.9375rem] text-muted">
             {[
               { href: '#the-month', label: 'The month, week by week' },
               { href: '#curriculum', label: `All ${TOTAL_SESSIONS} sessions` },
@@ -73,7 +73,7 @@ export default function Footer() {
           <h2 id="footer-weeks" className="eyebrow mb-5">
             What you learn
           </h2>
-          <ul className="space-y-1 text-[0.9375rem] text-muted">
+          <ul className="space-y-2 text-[0.9375rem] text-muted">
             {WEEKS.map((week) => (
               <li key={week.n}>
                 <a

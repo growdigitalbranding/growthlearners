@@ -7,6 +7,7 @@ import Curriculum from '@/components/sections/Curriculum';
 import Stack from '@/components/sections/Stack';
 import Numbers from '@/components/sections/Numbers';
 import Outcomes from '@/components/sections/Outcomes';
+import Proof from '@/components/sections/Proof';
 import Fee from '@/components/sections/Fee';
 import Faq from '@/components/sections/Faq';
 import FinalCta from '@/components/sections/FinalCta';
@@ -26,6 +27,7 @@ export default function Page() {
         <Stack />
         <Numbers />
         <Outcomes />
+        <Proof />
         <Fee />
         <Faq />
         <FinalCta />

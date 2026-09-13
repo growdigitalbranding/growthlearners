@@ -48,6 +48,22 @@
     scroll-margin-top: 5.5rem;
   }
 
+  /* Keyboard focus must not end up behind the fixed header or the sticky
+     mobile CTA bar (WCAG 2.4.11, Focus Not Obscured). scroll-margin on the
+     anchors covers anchor jumps only — focus-driven scrolling is the scroll
+     container's business, so the padding belongs here. */
+  html {
+    scroll-padding-top: 5.5rem;
+    scroll-padding-bottom: 6rem;
+  }
+
+  /* The sticky CTA bar is lg:hidden, so above that only the header matters. */
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-bottom: 2rem;
+    }
+  }
+
   ::selection {
     background-color: var(--accent);
     color: #fff;

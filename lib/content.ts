@@ -296,6 +296,43 @@ export const OUTCOMES = [
   },
 ];
 
+export type Testimonial = {
+  /** What they said. One or two sentences beats a paragraph. */
+  quote: string;
+  name: string;
+  /** "B.Com, PSG College of Technology" or "Marketing executive, Kovai Foods". */
+  role: string;
+  /** Which batch, so the reader can date it. */
+  batch: string;
+  /** Optional: the concrete thing they can point at — a live site, a result. */
+  result?: string;
+};
+
+/**
+ * ─────────────────────────────────────────────────────────────────────────────
+ *  EMPTY ON PURPOSE — add real quotes here and the section appears
+ * ─────────────────────────────────────────────────────────────────────────────
+ *  Every landing-page pattern for a course puts social proof before the price,
+ *  and it is the one thing this page does not have. It is deliberately empty
+ *  rather than filled with invented students: a fabricated testimonial on a
+ *  page a parent is reading is worse than none, and it is the kind of thing
+ *  that gets noticed.
+ *
+ *  Add one entry and the Proof section renders itself, between the outcomes
+ *  and the fee. Below three entries it lays out as a single column.
+ *
+ *  What to collect, in rough order of how much it is worth:
+ *    1. A student naming what they built and what the numbers did.
+ *    2. A student who got an interview or a client off the back of it.
+ *    3. A parent who paid. This page is read by parents; one of them saying
+ *       it was worth the money does more than three student quotes.
+ *
+ *  Keep them verbatim. Do not tidy the English — the unpolished ones read as
+ *  real, which is the entire point of the section.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+export const TESTIMONIALS: Testimonial[] = [];
+
 export const FEE_INCLUDES = [
   `All ${TOTAL_SESSIONS} sessions, in person, in ${SITE.city}`,
   'A domain name, registered in your name, for one year',

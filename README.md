@@ -38,6 +38,23 @@ be overridden with an environment variable instead of a code edit (see
 `SITE.seats` to flip it everywhere — hero, numbers, final CTA, the FAQ answer
 and the `Course` schema all read that one constant.
 
+### Social proof
+
+`TESTIMONIALS` in `lib/content.ts` is **empty on purpose**. Every landing-page
+pattern for a course puts social proof before the price, and it is the one thing
+this page does not have — but a fabricated testimonial on a page a parent is
+reading is worse than none.
+
+Add one entry and the Proof section renders itself, between the outcomes and the
+fee. Worth collecting, roughly in order of value:
+
+1. A student naming what they built and what the numbers did.
+2. A student who got an interview or a client off the back of it.
+3. **A parent who paid.** This page is read by parents; one of them saying it
+   was worth the money does more than three student quotes.
+
+Keep them verbatim — the unpolished ones read as real, which is the point.
+
 ### Callback form
 
 `POST /api/callback` validates the submission server-side, then forwards it as
@@ -115,7 +132,7 @@ Lighthouse mobile, simulated slow 4G and Moto G-class CPU:
 
 | | |
 |---|---|
-| Performance | **94** |
+| Performance | **92** (median of 3; runs vary 91–94) |
 | Accessibility | **100** |
 | Best practices | **100** |
 | SEO | **100** |
@@ -142,6 +159,17 @@ Contrast was audited rather than assumed, and three failures were fixed:
 - On the deep green, text tints are never lighter than `bg/65`.
 
 If you introduce new accent text, check it before shipping.
+
+Two further rules the page depends on:
+
+- **The proof strip must keep its pause button.** Motion that starts on its own
+  and runs longer than five seconds needs a mechanism to stop it (WCAG 2.2.2,
+  level A). Hover-pause does not count — most of this audience is on Android,
+  where there is no hover. The strip also idles via IntersectionObserver when
+  scrolled out of view, so it is not compositing forever on a mid-range phone.
+- **`scroll-padding` on `html` is load-bearing.** Without it, keyboard focus
+  scrolls under the sticky mobile CTA bar (WCAG 2.4.11). `scroll-margin` on the
+  anchors covers anchor jumps only, not focus-driven scrolling.
 
 ---
 
