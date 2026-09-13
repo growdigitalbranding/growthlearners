@@ -45,6 +45,7 @@
   }
 
   body {
+    font-optical-sizing: auto;
     background-color: var(--bg);
     color: var(--ink);
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
@@ -202,6 +203,30 @@
     @apply border-t border-line;
   }
 
+  /* A 1px rule under sticky chrome states a hard boundary that isn't really
+     there. A short gradient where content meets the floating bar reads as the
+     content passing underneath it, which is what is actually happening. Only
+     drawn once the page has scrolled and there is something to pass under. */
+  .scroll-edge::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    height: 1.5rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 400ms theme('transitionTimingFunction.editorial');
+    background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+  }
+
+  .scroll-edge[data-scrolled='true']::after {
+    opacity: 1;
+  }
+
+  .scroll-edge[data-inverted='true']::after {
+    background: linear-gradient(to bottom, var(--accent-2) 0%, transparent 100%);
+  }
+
   .skip-link {
     @apply sr-only;
   }
@@ -260,6 +285,52 @@
 
   .hero-title {
     font-size: clamp(2.5rem, 0.25rem + 2.5vw + 3.2vh, 4.75rem);
+  }
+}
+
+/* Translucency is a preference, not a given. Where it is turned down, the
+   floating surfaces become solid rather than frosted: raise the background to
+   opaque and drop the blur entirely, which is cheaper as well as clearer. */
+@media (prefers-reduced-transparency: reduce) {
+  .glass-surface {
+    background-color: var(--bg) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .glass-surface[data-inverted='true'] {
+    background-color: var(--accent-2) !important;
+  }
+
+  .noise-overlay {
+    display: none;
+  }
+}
+
+/* Raised contrast: solid surfaces with a defined edge, and the hairlines that
+   organise the page promoted to something actually visible. */
+@media (prefers-contrast: more) {
+  :root {
+    --muted: #4a4844;
+  }
+
+  .glass-surface {
+    background-color: var(--bg) !important;
+    backdrop-filter: none !important;
+    border-bottom: 1px solid var(--ink) !important;
+  }
+
+  .glass-surface[data-inverted='true'] {
+    background-color: var(--accent-2) !important;
+    border-bottom-color: var(--bg) !important;
+  }
+
+  .scroll-edge::after {
+    display: none;
+  }
+
+  .noise-overlay {
+    display: none;
   }
 }
 

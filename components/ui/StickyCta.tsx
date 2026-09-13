@@ -65,8 +65,8 @@ export default function StickyCta() {
           animate={{ y: 0 }}
           exit={{ y: '110%' }}
           transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-bg/95 backdrop-blur-md
-                     pb-[env(safe-area-inset-bottom)] lg:hidden"
+          className="glass-surface fixed inset-x-0 bottom-0 z-50 border-t border-line bg-bg/95
+                     backdrop-blur-md pb-[env(safe-area-inset-bottom)] lg:hidden"
         >
           <div className="flex items-center gap-3 px-4 py-3">
             <div className="min-w-0 flex-1">

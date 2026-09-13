@@ -134,7 +134,7 @@ Lighthouse mobile, simulated slow 4G and Moto G-class CPU:
 
 | | |
 |---|---|
-| Performance | **96** (median of 5; runs vary 94–96) |
+| Performance | **95** (median of 10; runs vary 90–97) |
 | Accessibility | **100** |
 | Best practices | **100** |
 | SEO | **100** |
@@ -167,6 +167,15 @@ Contrast was audited rather than assumed, and three failures were fixed:
 - On the deep green, text tints are never lighter than `bg/65`.
 
 If you introduce new accent text, check it before shipping.
+
+The page answers three accessibility signals, not one. `prefers-reduced-motion`
+collapses movement to a fade. `prefers-reduced-transparency` turns the floating
+header and sticky bar solid, drops their blur, and removes the paper grain.
+`prefers-contrast: more` does the same and adds a defined edge, darkens the
+muted token, and swaps the soft scroll edge for a hard rule. Playwright's
+`emulateMedia` silently accepts `reducedTransparency` and ignores it, so test
+that one through CDP `Emulation.setEmulatedMedia` or it will look broken when
+it is not.
 
 Two further rules the page depends on:
 
