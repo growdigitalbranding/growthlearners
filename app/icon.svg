@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Growthlearners">
+  <rect width="512" height="512" rx="116" fill="#FF4D2E"/>
+  <text x="232" y="368" fill="#FAF7F2"
+        font-family="Georgia, 'Times New Roman', 'Instrument Serif', serif"
+        font-size="360" text-anchor="middle">g</text>
+  <path d="M300 350c78-28 118-84 132-150" stroke="#FAF7F2" stroke-width="30"
+        fill="none" stroke-linecap="round"/>
+  <path d="M392 196l50-8-6 50z" fill="#FAF7F2"/>
+</svg>

@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #faf7f2;
+    --ink: #121212;
+    --accent: #ff4d2e;
+    --accent-2: #0b3d2e;
+    --muted: #6b6862;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  /* Lenis drives scroll itself; native smooth scrolling fights it. */
+  html.lenis {
+    scroll-behavior: auto;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Anchor scrolling must clear the fixed header. */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Numerals should line up in tables and stat rows. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Fine 1px grid, drawn with gradients so it costs no requests. */
+  .grid-lines {
+    background-image: linear-gradient(to right, rgba(18, 18, 18, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(18, 18, 18, 0.055) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .grid-lines-dark {
+    background-image: linear-gradient(to right, rgba(250, 247, 242, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(250, 247, 242, 0.07) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  /* Paper noise at 3%. Inline SVG turbulence — no image request. */
+  .paper-noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply font-sans text-eyebrow font-medium uppercase text-muted;
+  }
+
+  /* Every tappable target clears 48px. */
+  .btn {
+    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full px-6 py-3
+           font-sans text-[0.9375rem] font-medium transition-colors duration-200;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent text-white hover:bg-[#e83d1f];
+  }
+
+  .btn-ghost {
+    @apply btn border border-line-strong text-ink hover:border-ink hover:bg-ink hover:text-bg;
+  }
+
+  .btn-ghost-dark {
+    @apply btn border border-white/25 text-bg hover:border-transparent hover:bg-bg hover:text-ink;
+  }
+
+  .hairline {
+    @apply border-t border-line;
+  }
+}
+
+/* Short laptop viewports (1280x720, 1366x768) are common in India and are wide
+   enough to escape the mobile breakpoints while being too short for the full
+   hero rhythm. Trim the hero rather than push the status strip — the batch
+   date, seat count and fee — below the fold.
+
+   Deliberately outside @layer, so it outranks the Tailwind utilities on the
+   same elements without needing !important. */
+@media (min-width: 640px) and (max-height: 820px) {
+  .hero-body {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .hero-body .eyebrow {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 0.25rem + 2.6vw + 3.4vh, 4.75rem);
+  }
+}
+
+/* Reduced motion: everything collapses to a plain fade. Framer Motion and GSAP
+   are gated in JS too — this catches CSS-only motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee {
+    animation: none !important;
+  }
+}
