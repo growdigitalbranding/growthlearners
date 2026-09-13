@@ -29,14 +29,12 @@ export default function Outcomes() {
           <motion.li
             key={outcome.title}
             variants={reveal}
-            className={`flex flex-col rounded-2xl border p-7 sm:p-8 ${
-              outcome.tone === 'accent'
-                ? 'border-accent/35 bg-accent/[0.05]'
-                : 'border-line bg-ink/[0.015]'
-            }`}
+            className={`bezel ${outcome.tone === 'accent' ? '!border-accent/30 !bg-accent/[0.07]' : ''}`}
           >
-            <h3 className="text-balance font-serif text-h3">{outcome.title}</h3>
-            <p className="mt-4 leading-relaxed text-muted">{outcome.body}</p>
+            <div className="bezel-core flex h-full flex-col p-7 sm:p-8">
+              <h3 className="text-balance font-serif text-h3">{outcome.title}</h3>
+              <p className="mt-4 leading-relaxed text-muted">{outcome.body}</p>
+            </div>
           </motion.li>
         ))}
       </motion.ul>

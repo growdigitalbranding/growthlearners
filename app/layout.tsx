@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import { Instrument_Serif, Inter } from 'next/font/google';
+import { Instrument_Serif } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
 import Script from 'next/script';
 import './globals.css';
 import { SITE, batchStartDisplay } from '@/lib/site';
@@ -18,17 +19,11 @@ const serif = Instrument_Serif({
   adjustFontFallback: true,
 });
 
-const sans = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-sans',
-  // Not preloaded: the serif carries the headline and therefore LCP, and
-  // preloading both put 64kB of High-priority font bytes ahead of the
-  // render-blocking stylesheet. Inter swaps in over a metric-adjusted
-  // system fallback a moment later, which body copy can afford.
-  preload: false,
-  fallback: ['system-ui', 'Segoe UI', 'Roboto', 'sans-serif'],
-});
+// Geist Sans, self-hosted by the `geist` package. It was the brief's first
+// choice of sans and carries more character than Inter at display sizes,
+// which matters here because the sub-headline is the largest sans block on
+// the page and therefore the LCP element.
+const sans = GeistSans;
 
 const title = `${SITE.courseName} in ${SITE.city} | ${SITE.name}`;
 const description = `A ${SITE.durationWeeks}-week, ${TOTAL_SESSIONS}-session in-person AI digital marketing course in ${SITE.city}. You finish owning a live website, live Google and Meta campaigns, an AI video ad, a CRM and an automation. ${SITE.seats} seats. Next batch ${batchStartDisplay}.`;
@@ -111,6 +106,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SmoothScroll />
           {children}
         </MotionProvider>
+
+        {/* Page-wide paper grain. Mounted here, at the body root, so no
+            overflow-hidden or transformed section can clip it. */}
+        <div className="noise-overlay" aria-hidden />
       </body>
     </html>
   );

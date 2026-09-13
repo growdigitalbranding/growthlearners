@@ -14,21 +14,48 @@ import { track } from '@/lib/analytics';
 export default function StickyCta() {
   const [show, setShow] = useState(false);
 
+  const [pastHero, setPastHero] = useState(false);
+  const [atFinal, setAtFinal] = useState(false);
+
+  // Two observers instead of a scroll listener that measured the final CTA with
+  // getBoundingClientRect() on every frame. The bar shows once the hero is
+  // behind you and hides again over the final CTA, where a full-width WhatsApp
+  // button already sits.
   useEffect(() => {
-    const onScroll = () => {
-      const pastHero = window.scrollY > window.innerHeight * 0.9;
-      const finalCta = document.getElementById('enquire');
-      const atFinal = finalCta ? finalCta.getBoundingClientRect().top < window.innerHeight : false;
-      setShow(pastHero && !atFinal);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
+    const hero = document.getElementById('top');
+    const finalCta = document.getElementById('enquire');
+
+    const observers: IntersectionObserver[] = [];
+
+    if (hero) {
+      const heroObserver = new IntersectionObserver(
+        ([entry]) => setPastHero(!entry.isIntersecting),
+        { threshold: 0 },
+      );
+      heroObserver.observe(hero);
+      observers.push(heroObserver);
+    }
+
+    if (finalCta) {
+      const finalObserver = new IntersectionObserver(
+        ([entry]) =>
+          // Hide once the final CTA is reached and keep it hidden below that.
+          // isIntersecting alone goes false again when the CTA scrolls above
+          // the viewport, which would pop the bar back up over the footer —
+          // on top of the links a keyboard user is tabbing through down there.
+          setAtFinal(entry.isIntersecting || entry.boundingClientRect.top < 0),
+        { threshold: 0 },
+      );
+      finalObserver.observe(finalCta);
+      observers.push(finalObserver);
+    }
+
+    return () => observers.forEach((observer) => observer.disconnect());
   }, []);
+
+  useEffect(() => {
+    setShow(pastHero && !atFinal);
+  }, [pastHero, atFinal]);
 
   return (
     <AnimatePresence>

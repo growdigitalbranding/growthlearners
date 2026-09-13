@@ -41,26 +41,63 @@ export default function Header() {
     return () => observer.disconnect();
   }, []);
 
+  // Both of these used to run off a scroll listener that called
+  // getBoundingClientRect() on every frame — a forced layout per scroll event,
+  // on the thread a mid-range Android can least afford it. IntersectionObserver
+  // does the same work off the main thread and only fires on a real transition.
   useEffect(() => {
-    // The header is fixed and light. Over the inverted sections that reads as a
-    // pale band laid across the design, so the bar takes their colour instead.
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24);
+    // `scrolled`: a zero-height sentinel at the very top. Once it leaves the
+    // viewport the page has been scrolled.
+    const sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:absolute;top:24px;left:0;width:1px;height:1px;pointer-events:none;';
+    document.body.appendChild(sentinel);
 
-      const band = 36; // the header's own midline
-      const overDark = Array.from(document.querySelectorAll('[data-dark-section]')).some((el) => {
-        const rect = el.getBoundingClientRect();
-        return rect.top <= band && rect.bottom >= band;
-      });
-      setInverted(overDark);
+    const scrolledObserver = new IntersectionObserver(
+      ([entry]) => setScrolled(!entry.isIntersecting),
+      { threshold: 0 },
+    );
+    scrolledObserver.observe(sentinel);
+
+    return () => {
+      scrolledObserver.disconnect();
+      sentinel.remove();
+    };
+  }, []);
+
+  useEffect(() => {
+    // `inverted`: shrink the observer root to just the band the header occupies,
+    // so "intersecting" means "this dark section is under the header right now".
+    const darkSections = document.querySelectorAll('[data-dark-section]');
+    if (darkSections.length === 0) return;
+
+    let observer: IntersectionObserver | null = null;
+    const overlapping = new Set<Element>();
+
+    const build = () => {
+      observer?.disconnect();
+      overlapping.clear();
+      const headerHeight = 72;
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) overlapping.add(entry.target);
+            else overlapping.delete(entry.target);
+          });
+          setInverted(overlapping.size > 0);
+        },
+        { rootMargin: `0px 0px -${Math.max(0, window.innerHeight - headerHeight)}px 0px`, threshold: 0 },
+      );
+      darkSections.forEach((el) => observer!.observe(el));
     };
 
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    build();
+    // rootMargin is computed from viewport height, so it has to be rebuilt when
+    // that changes (rotation, or mobile browser chrome collapsing).
+    window.addEventListener('resize', build);
     return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('resize', build);
+      observer?.disconnect();
     };
   }, []);
 

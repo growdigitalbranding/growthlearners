@@ -15,7 +15,7 @@ export const metadata = {
  */
 export default function NotFound() {
   return (
-    <main className="paper-noise relative flex min-h-[100svh] flex-col overflow-hidden">
+    <main className="relative flex min-h-[100svh] flex-col overflow-hidden">
       <div className="grid-lines pointer-events-none absolute inset-0 -z-10" aria-hidden />
 
       <div className="shell flex flex-1 flex-col justify-center py-16">

@@ -64,7 +64,7 @@ const SECTIONS = [
 
 export default function PrivacyPage() {
   return (
-    <main className="paper-noise relative min-h-[100svh] overflow-hidden">
+    <main className="relative min-h-[100svh] overflow-hidden">
       <div className="grid-lines pointer-events-none absolute inset-0 -z-10" aria-hidden />
 
       <div className="shell max-w-3xl py-16 sm:py-24">

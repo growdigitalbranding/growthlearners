@@ -64,7 +64,7 @@ export default function FinalCta() {
     <section
       id="enquire"
       data-dark-section
-      className="paper-noise relative overflow-hidden bg-accent-2 py-section text-bg"
+      className="relative overflow-hidden bg-accent-2 py-section text-bg"
     >
       <div className="grid-lines-dark pointer-events-none absolute inset-0 opacity-70" aria-hidden />
 

@@ -18,9 +18,9 @@ export default function Fee() {
         initial="hidden"
         whileInView="visible"
         viewport={VIEWPORT}
-        className="mt-12 overflow-hidden rounded-3xl border border-line-strong bg-ink/[0.015]"
+        className="bezel mt-12"
       >
-        <div className="grid md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        <div className="bezel-core grid overflow-hidden md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
           <motion.div variants={reveal} className="border-b border-line p-8 sm:p-10 md:border-b-0 md:border-r">
             <p className="eyebrow">Course fee</p>
             <p className="mt-5 font-serif text-[clamp(3.25rem,2rem+6vw,5.5rem)] leading-none tabular">

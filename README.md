@@ -134,18 +134,24 @@ Lighthouse mobile, simulated slow 4G and Moto G-class CPU:
 
 | | |
 |---|---|
-| Performance | **91** (median of 5; runs vary 90–93) |
+| Performance | **96** (median of 5; runs vary 94–96) |
 | Accessibility | **100** |
 | Best practices | **100** |
 | SEO | **100** |
 
-TBT 60ms, CLS 0.038. Measured directly under 4x CPU throttling at 1.6Mbps, LCP
-fires together with FCP at ~1.0s as a single candidate.
+TBT 59ms, LCP 2.76s, FCP 1.07s. Measured directly under 4x CPU throttling at
+1.6Mbps, LCP fires together with FCP at ~1.0s as a single candidate.
 
 GSAP (~45kB) is loaded with a dynamic `import()` after hydration rather than in
-the entry chunk; the markup it animates is still server-rendered. Inter is
-deliberately not preloaded so the serif that carries the headline gets the
-bandwidth.
+the entry chunk; the markup it animates is still server-rendered.
+
+Three things account for most of the score. Geist Sans is self-hosted by the
+`geist` package rather than fetched from Google Fonts, which took a request off
+the critical path and roughly halved FCP. Neither the header nor the sticky CTA
+uses a scroll listener any more — both measured layout with
+`getBoundingClientRect()` on every scroll event, a forced reflow per frame.
+And the paper grain is one fixed layer at the body root instead of a blended
+pseudo-element on five scrolling sections.
 
 ---
 
@@ -172,6 +178,12 @@ Two further rules the page depends on:
 - **`scroll-padding` on `html` is load-bearing.** Without it, keyboard focus
   scrolls under the sticky mobile CTA bar (WCAG 2.4.11). `scroll-margin` on the
   anchors covers anchor jumps only, not focus-driven scrolling.
+- **`--font-sans` is an alias, and it has to stay one.** The `geist` package
+  defines `--font-geist-sans`; the rest of the codebase asks for `--font-sans`,
+  and `globals.css` bridges the two. An undefined custom property inside a
+  `font-family` list invalidates the whole declaration rather than falling
+  through to the next family — so getting this wrong drops the entire page to
+  Times New Roman, silently, with no build error.
 - **Don't branch a render on `useReducedMotion()`.** It reads the media query at
   module load, so on a reduced-motion client the first render disagrees with the
   server's `false` and React throws a hydration mismatch. `ProofStrip` holds it

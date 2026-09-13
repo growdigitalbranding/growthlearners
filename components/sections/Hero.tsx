@@ -25,7 +25,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="paper-noise relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-[4.5rem]"
+      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-[4.5rem]"
     >
       {/* Background grid, drifting slower than the page. */}
       <Parallax speed={0.85} className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
@@ -103,9 +103,11 @@ export default function Hero() {
 
           <motion.div variants={heroRise} className="mt-8 flex flex-wrap items-center gap-3">
             <WhatsAppCta location="hero" label="WhatsApp us" />
-            <a href="#curriculum" className="btn-ghost">
+            <a href="#curriculum" className="btn-ghost group">
               See the {TOTAL_SESSIONS} sessions
-              <ArrowDown size={17} strokeWidth={2} aria-hidden />
+              <span className="btn-icon-ghost">
+                <ArrowDown size={15} strokeWidth={2} aria-hidden />
+              </span>
             </a>
           </motion.div>
         </motion.div>
