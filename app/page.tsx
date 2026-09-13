@@ -2,7 +2,9 @@ import Header from '@/components/Header';
 import Hero from '@/components/sections/Hero';
 import ProofStrip from '@/components/sections/ProofStrip';
 import Problem from '@/components/sections/Problem';
+import TheMonth from '@/components/sections/TheMonth';
 import Curriculum from '@/components/sections/Curriculum';
+import Stack from '@/components/sections/Stack';
 import Numbers from '@/components/sections/Numbers';
 import Outcomes from '@/components/sections/Outcomes';
 import Fee from '@/components/sections/Fee';
@@ -19,7 +21,9 @@ export default function Page() {
         <Hero />
         <ProofStrip />
         <Problem />
+        <TheMonth />
         <Curriculum />
+        <Stack />
         <Numbers />
         <Outcomes />
         <Fee />

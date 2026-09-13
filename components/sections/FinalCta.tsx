@@ -61,7 +61,11 @@ export default function FinalCta() {
     'placeholder:text-bg/40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent';
 
   return (
-    <section id="enquire" className="paper-noise relative overflow-hidden bg-accent-2 py-section text-bg">
+    <section
+      id="enquire"
+      data-dark-section
+      className="paper-noise relative overflow-hidden bg-accent-2 py-section text-bg"
+    >
       <div className="grid-lines-dark pointer-events-none absolute inset-0 opacity-70" aria-hidden />
 
       <div className="shell relative">
