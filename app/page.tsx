@@ -17,8 +17,13 @@ import StickyCta from '@/components/ui/StickyCta';
 export default function Page() {
   return (
     <>
+      {/* First tab stop. The header is fixed and the nav is five links deep,
+          so without this a keyboard user tabs the whole thing every visit. */}
+      <a href="#the-month" className="skip-link">
+        Skip to the course
+      </a>
       <Header />
-      <main>
+      <main id="main">
         <Hero />
         <ProofStrip />
         <Problem />

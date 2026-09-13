@@ -115,8 +115,13 @@ export default function Footer() {
           <p>
             AI Digital Marketing Course in {SITE.city} · Next batch {batchStartDisplay}
           </p>
-          <p>
-            © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <a href="/privacy" className="inline-block min-h-[2.75rem] py-3 transition-colors hover:text-ink">
+              Privacy
+            </a>
+            <span>
+              © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+            </span>
           </p>
         </div>
       </div>

@@ -1,9 +1,7 @@
 'use client';
 
 import { useId, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { accordionPanel } from '@/lib/motion';
 
 type Props = {
   /** Everything shown in the closed state, laid out by the caller. */
@@ -18,8 +16,13 @@ type Props = {
  * One accordion row, shared by the curriculum and the FAQ.
  *
  * The trigger is a real <button> with aria-expanded and aria-controls, so it
- * works from the keyboard and announces its state. The panel's height animates;
- * under reduced motion MotionConfig leaves the opacity fade only.
+ * works from the keyboard and announces its state.
+ *
+ * The panel is pure CSS (see .disclosure-panel in globals.css). It used to
+ * animate height:auto through Framer Motion, which meant measuring the content
+ * and driving an explicit pixel height via rAF on every frame — a layout,
+ * paint and composite each time, across 28 rows. grid-template-rows does the
+ * same job declaratively, and takes Framer out of 28 components.
  */
 export default function Disclosure({ summary, children, onOpen, className = '', tone = 'light' }: Props) {
   const [open, setOpen] = useState(false);
@@ -44,7 +47,7 @@ export default function Disclosure({ summary, children, onOpen, className = '', 
           onClick={toggle}
           aria-expanded={open}
           aria-controls={panelId}
-          className={`flex min-h-[3.25rem] w-full items-center gap-4 py-5 text-left transition-colors duration-300
+          className={`flex min-h-[3.25rem] w-full items-center gap-4 py-5 text-left transition-colors duration-200
                       ${open ? warm : 'bg-transparent'}
                       ${tone === 'dark' ? 'hover:bg-white/[0.03]' : 'hover:bg-ink/[0.025]'}`}
         >
@@ -53,28 +56,23 @@ export default function Disclosure({ summary, children, onOpen, className = '', 
             size={20}
             strokeWidth={2}
             aria-hidden
-            className={`mr-1 shrink-0 transition-transform duration-300 ease-editorial
+            className={`mr-1 shrink-0 transition-transform duration-200 ease-editorial
                         ${tone === 'dark' ? 'text-bg/65' : 'text-muted'} ${open ? 'rotate-180 text-accent-deep' : ''}`}
           />
         </button>
       </h3>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            id={panelId}
-            role="region"
-            aria-labelledby={buttonId}
-            variants={accordionPanel}
-            initial="collapsed"
-            animate="open"
-            exit="collapsed"
-            className="overflow-hidden"
-          >
-            <div className="pb-7 pr-8">{children}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        data-open={open}
+        className="disclosure-panel"
+      >
+        <div>
+          <div className="pb-7 pr-8">{children}</div>
+        </div>
+      </div>
     </div>
   );
 }

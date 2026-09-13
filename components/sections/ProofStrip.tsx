@@ -27,7 +27,16 @@ export default function ProofStrip() {
   const section = useRef<HTMLElement>(null);
   const [paused, setPaused] = useState(false);
   const [inView, setInView] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const reduced = useReducedMotion();
+
+  // useReducedMotion() reads the media query as soon as the module loads, so on
+  // a reduced-motion client its very first render already disagrees with the
+  // server's `false` — and this component branches on it, which is a hydration
+  // mismatch (React #418). Holding it until after mount makes the first client
+  // render match the server, then the effect applies the real preference.
+  useEffect(() => setMounted(true), []);
+  const reducedActive = mounted && reduced;
 
   useEffect(() => {
     const el = section.current;
@@ -40,10 +49,10 @@ export default function ProofStrip() {
     return () => observer.disconnect();
   }, []);
 
-  const running = !paused && inView && !reduced;
+  const running = !paused && inView && !reducedActive;
   // Pausing, or asking for reduced motion, turns the strip into a plain
   // scrollable row so the full list stays reachable.
-  const scrollable = paused || reduced;
+  const scrollable = paused || reducedActive;
 
   return (
     <section
@@ -62,7 +71,7 @@ export default function ProofStrip() {
         <ul
           style={{ animationPlayState: running ? 'running' : 'paused' }}
           className="flex w-max animate-marquee items-center [--marquee-duration:46s]
-                     group-hover:[animation-play-state:paused]"
+                     [@media(hover:hover)and(pointer:fine)]:group-hover:[animation-play-state:paused]"
         >
           {track.map((item, index) => (
             <li
@@ -81,7 +90,7 @@ export default function ProofStrip() {
       </div>
 
       {/* Nothing to pause once reduced motion has stopped it. */}
-      {!reduced && (
+      {!reducedActive && (
         <button
           type="button"
           onClick={() => setPaused((wasPaused) => !wasPaused)}

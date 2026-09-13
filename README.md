@@ -75,6 +75,8 @@ fails, the lead is written to the server log so it stays recoverable.
 app/
   layout.tsx            fonts, metadata, JSON-LD, GTM
   page.tsx              section order — the whole page
+  not-found.tsx         branded 404
+  privacy/page.tsx      privacy notice — READ THE HEADER, needs legal review
   opengraph-image.tsx   OG card generated at build time
   icon.svg              favicon
   api/callback/route.ts callback form handler
@@ -132,7 +134,7 @@ Lighthouse mobile, simulated slow 4G and Moto G-class CPU:
 
 | | |
 |---|---|
-| Performance | **92** (median of 3; runs vary 91–94) |
+| Performance | **91** (median of 5; runs vary 90–93) |
 | Accessibility | **100** |
 | Best practices | **100** |
 | SEO | **100** |
@@ -170,6 +172,22 @@ Two further rules the page depends on:
 - **`scroll-padding` on `html` is load-bearing.** Without it, keyboard focus
   scrolls under the sticky mobile CTA bar (WCAG 2.4.11). `scroll-margin` on the
   anchors covers anchor jumps only, not focus-driven scrolling.
+- **Don't branch a render on `useReducedMotion()`.** It reads the media query at
+  module load, so on a reduced-motion client the first render disagrees with the
+  server's `false` and React throws a hydration mismatch. `ProofStrip` holds it
+  behind a mounted flag for exactly this reason.
+- **The accordion panel is CSS, not Framer.** `grid-template-rows: 0fr → 1fr`
+  with `visibility` doing the accessibility work. Animating `height: auto`
+  through JS meant measuring content and driving a pixel height per frame,
+  28 rows deep.
+
+### Still needed before launch
+
+The privacy notice at `/privacy` describes what the code actually does, but it
+cannot know your retention period, who can access enquiries, or your grievance
+officer's details — which India's DPDP Act 2023 requires a data fiduciary to
+publish. Read the header comment in that file. There is also no terms of
+service or refund policy, because those are commercial terms only you can set.
 
 ---
 

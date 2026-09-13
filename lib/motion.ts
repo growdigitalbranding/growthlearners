@@ -100,15 +100,9 @@ export const slideFrom = (direction: 'left' | 'right'): Variants => ({
   visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE_OUT } },
 });
 
-/** Accordion row open/close. Height is animated, so this one is layout-safe. */
-export const accordionPanel: Variants = {
-  collapsed: { height: 0, opacity: 0 },
-  open: {
-    height: 'auto',
-    opacity: 1,
-    transition: { height: { duration: 0.34, ease: EASE_OUT }, opacity: { duration: 0.22, delay: 0.06 } },
-  },
-};
-
-/** Magnetic and parallax are desktop-only — disabled below 768px. */
-export const DESKTOP_QUERY = '(min-width: 768px)';
+/**
+ * Magnetic and parallax are desktop-only. Width alone is the wrong test — an
+ * 800px Android tablet is wide but has no cursor to be magnetic toward, and
+ * touch fires a false hover on tap. Pointer type has to be part of the query.
+ */
+export const DESKTOP_QUERY = '(min-width: 768px) and (hover: hover) and (pointer: fine)';

@@ -15,6 +15,31 @@ const NAV = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [inverted, setInverted] = useState(false);
+  const [active, setActive] = useState('');
+
+  // Which section you are in. On a page this long the nav is the only
+  // orientation you get, and without this it never tells you where you are.
+  useEffect(() => {
+    const targets = NAV
+      .map((item) => document.querySelector(item.href))
+      .filter((el): el is Element => Boolean(el));
+    if (targets.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(`#${visible.target.id}`);
+      },
+      // Band across the upper-middle of the viewport, so the active link
+      // changes when a section genuinely takes over the screen.
+      { rootMargin: '-20% 0px -60% 0px', threshold: [0, 0.25, 0.5] },
+    );
+
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     // The header is fixed and light. Over the inverted sections that reads as a
@@ -57,20 +82,31 @@ export default function Header() {
         </a>
 
         <nav aria-label="Sections" className="hidden items-center gap-7 lg:flex">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`relative py-2 text-sm transition-colors
-                          after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left
-                          after:scale-x-0 after:bg-accent after:transition-transform after:duration-300
-                          hover:after:scale-x-100 ${
-                            inverted ? 'text-bg/65 hover:text-bg' : 'text-muted hover:text-ink'
-                          }`}
-            >
-              {item.label}
-            </a>
-          ))}
+          {NAV.map((item) => {
+            const isActive = active === item.href;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? 'true' : undefined}
+                className={`relative py-2 text-sm transition-colors
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left
+                            after:bg-accent after:transition-transform after:duration-300
+                            ${isActive ? 'after:scale-x-100' : 'after:scale-x-0'}
+                            ${
+                              inverted
+                                ? isActive
+                                  ? 'text-bg'
+                                  : 'text-bg/65 hover:text-bg'
+                                : isActive
+                                  ? 'text-ink'
+                                  : 'text-muted hover:text-ink'
+                            }`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </nav>
 
         <WhatsAppCta
