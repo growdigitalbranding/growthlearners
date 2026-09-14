@@ -270,12 +270,16 @@ export const WORK: WorkItem[] = [
   // `student` is empty pending the credit — see the note on the type.
   { title: 'Headphones, product reel', kind: 'AI product film', student: '', src: '/work/reel-headphones.mp4', poster: '/work/reel-headphones.jpg', type: 'video', ratio: '9/16' },
   { title: 'Festive kurta, try-on', kind: 'UGC-style ad', student: '', src: '/work/ugc-kurta.mp4', poster: '/work/ugc-kurta.jpg', type: 'video', ratio: '9/16' },
+  // A spec piece against a real brand — the trademark and trade dress are
+  // Kellanova's, not ours, and this page sells a paid course. Added on the
+  // owner's explicit instruction after that was raised. The `kind` says "spec"
+  // so the page never implies it was commissioned work.
+  { title: 'Pringles, brand film', kind: 'Brand film (spec)', student: '', src: '/work/film-pringles.mp4', poster: '/work/film-pringles.jpg', type: 'video', ratio: '16/9' },
 
   { title: 'Kovai Silks, festival campaign', kind: 'AI ad campaign', student: 'Sample entry', src: '/work/campaign-01.svg', ratio: '4/5', placeholder: true },
   { title: 'Cold brew, studio set', kind: 'Product photography', student: 'Sample entry', src: '/work/product-01.svg', ratio: '1/1', placeholder: true },
   { title: 'Saravanampatti launch', kind: 'Real estate creative', student: 'Sample entry', src: '/work/realestate-01.svg', ratio: '4/5', placeholder: true },
   { title: 'Thirty days of posts', kind: 'Social campaign', student: 'Sample entry', src: '/work/social-01.svg', ratio: '4/5', placeholder: true },
-  { title: 'The workshop film', kind: 'Brand film', student: 'Sample entry', src: '/work/film-01.svg', ratio: '16/9', placeholder: true },
   { title: 'Clinic booking page', kind: 'Landing page', student: 'Sample entry', src: '/work/landing-01.svg', ratio: '16/9', placeholder: true },
 ];
 
