@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Loader2 } from 'lucide-react';
 import WhatsAppCta from '../ui/WhatsAppCta';
 import { reveal, stagger, VIEWPORT } from '@/lib/motion';
 import { SITE, batchStartDisplay, telLink } from '@/lib/site';
 import { track } from '@/lib/analytics';
+import { FIELD_ORDER, validateField, validateForm } from '@/lib/validation';
 
 type Status = 'idle' | 'sending' | 'done' | 'error';
 
@@ -18,11 +19,42 @@ export default function FinalCta() {
   const [status, setStatus] = useState<Status>('idle');
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [formError, setFormError] = useState('');
+  const formRef = useRef<HTMLFormElement>(null);
+
+  /** Put the cursor on the first thing that needs fixing, in reading order. */
+  const focusFirstInvalid = useCallback((errors: Record<string, string>) => {
+    const first = FIELD_ORDER.find((field) => errors[field]);
+    if (!first) return;
+    const input = formRef.current?.elements.namedItem(first);
+    if (input instanceof HTMLElement) input.focus();
+  }, []);
+
+  /**
+   * Validate on blur, never on keystroke — telling somebody their phone number
+   * is wrong while they are still typing it is just noise. Once a field is
+   * showing an error it re-checks on every change, so the message clears the
+   * moment it stops being true rather than waiting for another blur.
+   */
+  const checkField = useCallback((field: 'name' | 'mobile' | 'org', value: string) => {
+    const message = validateField(field, value);
+    setFieldErrors((previous) => {
+      if ((previous[field] ?? '') === message) return previous;
+      const next = { ...previous };
+      if (message) next[field] = message;
+      else delete next[field];
+      return next;
+    });
+  }, []);
+
+  const fieldProps = (field: 'name' | 'mobile' | 'org') => ({
+    onBlur: (event: React.FocusEvent<HTMLInputElement>) => checkField(field, event.target.value),
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (fieldErrors[field]) checkField(field, event.target.value);
+    },
+  });
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus('sending');
-    setFieldErrors({});
     setFormError('');
 
     const data = new FormData(event.currentTarget);
@@ -33,6 +65,22 @@ export default function FinalCta() {
       website: data.get('website'),
     };
 
+    // Catch what we can before spending a round trip on it. The server checks
+    // the same rules again — this is a courtesy, not the gate.
+    const localErrors = validateForm({
+      name: String(payload.name ?? ''),
+      mobile: String(payload.mobile ?? ''),
+    });
+    if (Object.keys(localErrors).length > 0) {
+      setFieldErrors(localErrors);
+      setStatus('error');
+      focusFirstInvalid(localErrors);
+      return;
+    }
+
+    setStatus('sending');
+    setFieldErrors({});
+
     try {
       const response = await fetch('/api/callback', {
         method: 'POST',
@@ -42,9 +90,13 @@ export default function FinalCta() {
       const result = await response.json();
 
       if (!response.ok || !result.ok) {
-        setFieldErrors(result.fieldErrors ?? {});
+        const serverErrors = result.fieldErrors ?? {};
+        setFieldErrors(serverErrors);
         setFormError(result.error ?? 'Please check the highlighted fields.');
         setStatus('error');
+        // Without this, focus stays wherever the submit left it and the error
+        // can be off-screen entirely on a phone.
+        focusFirstInvalid(serverErrors);
         return;
       }
 
@@ -114,7 +166,7 @@ export default function FinalCta() {
                 <div>
                   {/* pb-1 keeps the submit button's focus ring inside the
                       panel, which overflow: hidden would otherwise clip. */}
-                  <form onSubmit={onSubmit} noValidate className="space-y-4 pb-1">
+                  <form ref={formRef} onSubmit={onSubmit} noValidate className="space-y-4 pb-1">
                   <div>
                     <label htmlFor="name" className="mb-2 block text-sm text-bg/70">
                       Your name
@@ -125,13 +177,14 @@ export default function FinalCta() {
                       type="text"
                       autoComplete="name"
                       required
+                      {...fieldProps('name')}
                       aria-invalid={Boolean(fieldErrors.name)}
                       aria-describedby={fieldErrors.name ? 'name-error' : undefined}
                       className={inputClass}
                       placeholder="Priya R"
                     />
                     {fieldErrors.name && (
-                      <p id="name-error" className="mt-2 text-sm text-accent-soft">
+                      <p id="name-error" role="alert" className="mt-2 text-sm text-accent-soft">
                         {fieldErrors.name}
                       </p>
                     )}
@@ -148,13 +201,14 @@ export default function FinalCta() {
                       inputMode="numeric"
                       autoComplete="tel"
                       required
+                      {...fieldProps('mobile')}
                       aria-invalid={Boolean(fieldErrors.mobile)}
                       aria-describedby={fieldErrors.mobile ? 'mobile-error' : undefined}
                       className={inputClass}
                       placeholder="98765 43210"
                     />
                     {fieldErrors.mobile && (
-                      <p id="mobile-error" className="mt-2 text-sm text-accent-soft">
+                      <p id="mobile-error" role="alert" className="mt-2 text-sm text-accent-soft">
                         {fieldErrors.mobile}
                       </p>
                     )}

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { FIELD_LIMITS, normaliseMobile, tenDigits, trimTo, validateForm } from '@/lib/validation';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -23,11 +24,6 @@ type Payload = {
   website?: unknown;
 };
 
-const asString = (value: unknown, max: number): string =>
-  typeof value === 'string' ? value.trim().slice(0, max) : '';
-
-/** 10 digits starting 6–9, with an optional +91 / 0 prefix. */
-const MOBILE = /^(?:\+?91[\s-]?|0)?([6-9]\d{9})$/;
 
 export async function POST(request: Request) {
   let body: Payload;
@@ -38,19 +34,17 @@ export async function POST(request: Request) {
   }
 
   // Bots fill every field they find. Accept, then discard.
-  if (asString(body.website, 200)) {
+  if (trimTo(body.website, 200)) {
     return NextResponse.json({ ok: true });
   }
 
-  const name = asString(body.name, 80);
-  const rawMobile = asString(body.mobile, 20).replace(/[\s-]/g, '');
-  const org = asString(body.org, 120);
+  const name = trimTo(body.name, FIELD_LIMITS.name);
+  const rawMobile = normaliseMobile(body.mobile);
+  const org = trimTo(body.org, FIELD_LIMITS.org);
 
-  const fieldErrors: Record<string, string> = {};
-  if (name.length < 2) fieldErrors.name = 'Please enter your name.';
-
-  const match = MOBILE.exec(rawMobile);
-  if (!match) fieldErrors.mobile = 'Enter a 10-digit Indian mobile number.';
+  // Same rules the form applied in the browser — see lib/validation.ts for why
+  // there is exactly one copy of them.
+  const fieldErrors = validateForm({ name, mobile: rawMobile });
 
   if (Object.keys(fieldErrors).length > 0) {
     return NextResponse.json({ ok: false, fieldErrors }, { status: 422 });
@@ -58,7 +52,7 @@ export async function POST(request: Request) {
 
   const lead = {
     name,
-    mobile: `+91${match![1]}`,
+    mobile: `+91${tenDigits(body.mobile)}`,
     org: org || null,
     source: 'growthlearners.in/#enquire',
     receivedAt: new Date().toISOString(),
