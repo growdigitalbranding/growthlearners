@@ -18,12 +18,19 @@ export const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
 export const DURATION = {
   fast: 0.28,
-  base: 0.6,
+  base: 0.45,
   slow: 0.9,
 } as const;
 
-/** 0.08s between children in any group. */
-export const STAGGER = 0.08;
+/**
+ * 0.05s between children in any group.
+ *
+ * Stagger compounds with duration: at the old 0.08s and a 0.6s reveal, the
+ * sixth card in a grid finished a full second after the first one started
+ * moving, which reads as the page catching up with the scroll rather than
+ * responding to it.
+ */
+export const STAGGER = 0.05;
 
 /** Reveal once at 20% of the viewport, and never re-trigger on scroll up. */
 export const VIEWPORT = { once: true, amount: 0.2 } as const;

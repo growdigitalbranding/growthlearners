@@ -139,7 +139,7 @@ export default function Header() {
                 aria-current={isActive ? 'true' : undefined}
                 className={`relative py-2 text-sm font-medium transition-colors
                             after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left
-                            after:bg-accent after:transition-transform after:duration-300
+                            after:bg-accent after:transition-transform after:duration-200
                             ${isActive ? 'after:scale-x-100' : 'after:scale-x-0'}
                             ${
                               inverted

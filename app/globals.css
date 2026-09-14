@@ -169,14 +169,28 @@
      the label. Moves on hover with the button, not independently. */
   .btn-icon {
     @apply -mr-3 ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full
-           bg-ink/10 transition-transform duration-300 ease-editorial
-           group-hover:translate-x-0.5 group-hover:-translate-y-px;
+           bg-ink/10 transition-transform duration-150 ease-editorial;
   }
 
   .btn-icon-ghost {
     @apply -mr-3 ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full
-           bg-ink/[0.06] transition-transform duration-300 ease-editorial
-           group-hover:translate-x-0.5 group-hover:-translate-y-px;
+           bg-ink/[0.06] transition-transform duration-150 ease-editorial;
+  }
+
+  /* The nudge only exists for a real pointer: a touch tap fires :hover and
+     would leave the icon displaced until the next blur. Written as a plain
+     media query rather than stacked Tailwind variants because an arbitrary
+     media variant combined with group-hover does not survive @apply — it
+     compiles to nothing at all, which reads as "gated" until you hover with an
+     actual mouse and find the nudge gone.
+
+     150ms, not 300: this rides the most-hovered element on the page, and a
+     hover that outlasts the glance reads as lag. */
+  @media (hover: hover) and (pointer: fine) {
+    .group:hover .btn-icon,
+    .group:hover .btn-icon-ghost {
+      @apply translate-x-0.5 -translate-y-px;
+    }
   }
 
   /* Every tappable target clears 48px. */
@@ -249,15 +263,15 @@
     grid-template-rows: 0fr;
     visibility: hidden;
     transition:
-      grid-template-rows 320ms theme('transitionTimingFunction.editorial'),
-      visibility 0s linear 320ms;
+      grid-template-rows 240ms theme('transitionTimingFunction.editorial'),
+      visibility 0s linear 240ms;
   }
 
   .disclosure-panel[data-open='true'] {
     grid-template-rows: 1fr;
     visibility: visible;
     transition:
-      grid-template-rows 320ms theme('transitionTimingFunction.editorial'),
+      grid-template-rows 240ms theme('transitionTimingFunction.editorial'),
       visibility 0s;
   }
 
