@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import SectionHeading from './SectionHeading';
 import { WORK } from '@/lib/content';
 import SampleBadge from '../ui/SampleBadge';
+import WorkVideo from '../ui/WorkVideo';
 import { reveal, stagger, VIEWPORT_TALL } from '@/lib/motion';
 
 /**
@@ -56,23 +57,12 @@ export default function Work() {
           >
             <div style={{ aspectRatio: item.ratio ?? '4/5' }} className="w-full overflow-hidden">
               {item.type === 'video' ? (
-                <video
-                  src={item.src}
-                  poster={item.poster}
-                  muted
-                  loop
-                  playsInline
-                  preload="none"
-                  aria-label={`${item.kind} by ${item.student}`}
-                  className="h-full w-full object-cover"
-                  onMouseEnter={(event) => void event.currentTarget.play()}
-                  onMouseLeave={(event) => event.currentTarget.pause()}
-                />
+                <WorkVideo item={item} />
               ) : (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={item.src}
-                  alt={`${item.title}. ${item.kind}, made by ${item.student}.`}
+                  alt={item.student ? `${item.title}. ${item.kind}, made by ${item.student}.` : `${item.title}. ${item.kind}.`}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 ease-editorial
                              [@media(hover:hover)and(pointer:fine)]:group-hover:scale-[1.03]"
@@ -82,7 +72,11 @@ export default function Work() {
 
             <figcaption className="flex items-baseline justify-between gap-4 px-4 py-3.5">
               <span className="min-w-0 truncate text-[0.9375rem] text-bg">{item.title}</span>
-              <span className="shrink-0 text-[0.8125rem] text-bg/55">{item.student}</span>
+              {item.student ? (
+                <span className="shrink-0 text-[0.8125rem] text-bg/55">{item.student}</span>
+              ) : (
+                <span className="shrink-0 text-[0.8125rem] text-bg/40">{item.kind}</span>
+              )}
             </figcaption>
           </motion.li>
         ))}

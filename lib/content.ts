@@ -248,7 +248,12 @@ export type WorkItem = {
   title: string;
   /** "AI ad campaign", "Product photography", "Brand film". */
   kind: string;
-  /** Who made it, and in which batch. Anonymous work proves nothing. */
+  /**
+   * Who made it, and in which batch. Anonymous work proves nothing — but an
+   * invented name proves less than nothing, so this may be left empty while a
+   * real credit is being collected. The caption drops the byline when it is,
+   * and preflight counts it as unfinished rather than letting it ship quietly.
+   */
   student: string;
   src: string;
   type?: 'image' | 'video';
@@ -260,13 +265,17 @@ export type WorkItem = {
 };
 
 export const WORK: WorkItem[] = [
+  // Real work. Transcoded from the supplied masters to 720px, muted (the
+  // gallery plays them silently) and re-encoded: 22MB of source became 3MB.
+  // `student` is empty pending the credit — see the note on the type.
+  { title: 'Headphones, product reel', kind: 'AI product film', student: '', src: '/work/reel-headphones.mp4', poster: '/work/reel-headphones.jpg', type: 'video', ratio: '9/16' },
+  { title: 'Festive kurta, try-on', kind: 'UGC-style ad', student: '', src: '/work/ugc-kurta.mp4', poster: '/work/ugc-kurta.jpg', type: 'video', ratio: '9/16' },
+
   { title: 'Kovai Silks, festival campaign', kind: 'AI ad campaign', student: 'Sample entry', src: '/work/campaign-01.svg', ratio: '4/5', placeholder: true },
   { title: 'Cold brew, studio set', kind: 'Product photography', student: 'Sample entry', src: '/work/product-01.svg', ratio: '1/1', placeholder: true },
   { title: 'Saravanampatti launch', kind: 'Real estate creative', student: 'Sample entry', src: '/work/realestate-01.svg', ratio: '4/5', placeholder: true },
   { title: 'Thirty days of posts', kind: 'Social campaign', student: 'Sample entry', src: '/work/social-01.svg', ratio: '4/5', placeholder: true },
-  { title: 'Nine-second hook', kind: 'AI reel', student: 'Sample entry', src: '/work/reel-01.svg', ratio: '9/16', placeholder: true },
   { title: 'The workshop film', kind: 'Brand film', student: 'Sample entry', src: '/work/film-01.svg', ratio: '16/9', placeholder: true },
-  { title: 'Unboxing, vertical cut', kind: 'UGC-style ad', student: 'Sample entry', src: '/work/ugc-01.svg', ratio: '9/16', placeholder: true },
   { title: 'Clinic booking page', kind: 'Landing page', student: 'Sample entry', src: '/work/landing-01.svg', ratio: '16/9', placeholder: true },
 ];
 
