@@ -33,7 +33,9 @@ export default function Numbers() {
               <span className="block font-serif text-[clamp(4rem,2.5rem+7vw,8rem)] leading-none">
                 <CountUp to={stat.value} />
               </span>
-              <span className="relative mt-4 inline-block pb-2 font-sans text-lg text-ink">
+              {/* The <dt> above already carries this label. Without aria-hidden a
+                  screen reader announces it twice: "sessions, 20, sessions". */}
+              <span aria-hidden className="relative mt-4 inline-block pb-2 font-sans text-lg text-ink">
                 {stat.label}
                 <motion.span
                   aria-hidden
