@@ -213,7 +213,11 @@ export const TOTAL_SESSIONS = WEEKS.reduce((n, w) => n + w.sessions.length, 0);
 export const PILLARS = [
   { title: 'Research', body: 'Find what an audience actually wants, in an afternoon rather than a fortnight.' },
   { title: 'Strategy', body: 'Turn what you found into decisions somebody can act on.' },
-  { title: 'Create', body: 'Generate campaigns, images and video that look like one brand.' },
+    // 'Generate', not 'Create'. Two reasons: Stage 02 is already called Create and
+  // means something narrower, and the distinction between what the machine does
+  // (generate) and what the student does (direct) is the argument the creative
+  // director section makes. Using one word for both blunts it.
+  { title: 'Generate', body: 'Images, video and copy at a volume you could not have shot.' },
   { title: 'Automate', body: 'Hand the repetitive half of the job to something that does not get bored.' },
   { title: 'Build', body: 'Ship the landing pages and systems the campaign runs on.' },
   { title: 'Launch', body: 'Put real money behind it and read what comes back.' },
