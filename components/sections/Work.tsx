@@ -5,6 +5,7 @@ import SectionHeading from './SectionHeading';
 import { WORK } from '@/lib/content';
 import SampleBadge from '../ui/SampleBadge';
 import WorkVideo from '../ui/WorkVideo';
+import WorkLink from '../ui/WorkLink';
 import { reveal, stagger, VIEWPORT_TALL } from '@/lib/motion';
 
 /**
@@ -58,10 +59,12 @@ export default function Work() {
             <div style={{ aspectRatio: item.ratio ?? '4/5' }} className="w-full overflow-hidden">
               {item.type === 'video' ? (
                 <WorkVideo item={item} />
+              ) : item.type === 'link' ? (
+                <WorkLink item={item} />
               ) : (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={item.src}
+                  src={item.src ?? ''}
                   alt={item.student ? `${item.title}. ${item.kind}, made by ${item.student}.` : `${item.title}. ${item.kind}.`}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 ease-editorial

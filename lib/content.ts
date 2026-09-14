@@ -255,8 +255,14 @@ export type WorkItem = {
    * and preflight counts it as unfinished rather than letting it ship quietly.
    */
   student: string;
-  src: string;
-  type?: 'image' | 'video';
+  src?: string;
+  /**
+   * For work whose proof is that it is live. The tile renders the address and
+   * links to it instead of showing a picture of it — a screenshot proves a
+   * page was designed, a link proves it shipped.
+   */
+  href?: string;
+  type?: 'image' | 'video' | 'link';
   poster?: string;
   /** Aspect for the grid. */
   ratio?: '16/9' | '4/5' | '9/16' | '1/1';
@@ -285,7 +291,7 @@ export const WORK: WorkItem[] = [
   { title: 'AI marketing, key visual', kind: 'Campaign poster', student: '', src: '/work/campaign-poster.webp', ratio: '4/5' },
   { title: 'Fashion label, engagement post', kind: 'Social creative', student: '', src: '/work/fashion-social-post.webp', ratio: '1/1' },
 
-  { title: 'Clinic booking page', kind: 'Landing page', student: 'Sample entry', src: '/work/landing-01.svg', ratio: '16/9', placeholder: true },
+  { title: 'A page on its own domain', kind: 'Landing page', student: '', href: 'https://laxdesigns.lovable.app/', type: 'link', ratio: '16/9' },
 ];
 
 /** Section 06 — you are the director, AI is the production engine. */
