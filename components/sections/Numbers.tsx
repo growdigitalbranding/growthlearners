@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import CountUp from '../ui/CountUp';
-import { underline, reveal, stagger, VIEWPORT } from '@/lib/motion';
+import { reveal, stagger, VIEWPORT } from '@/lib/motion';
 import { SITE } from '@/lib/site';
 import { TOTAL_SESSIONS } from '@/lib/content';
 
@@ -12,9 +12,22 @@ const STATS = [
   { value: SITE.deliverables, label: 'things you build', note: 'Every one of them yours, with the logins.' },
 ];
 
+/**
+ * The page's one moment of real scale.
+ *
+ * Every other section on this page is a headline at the same size, in the same
+ * place, above content in the same container. Read end to end that regularity
+ * is the thing that makes a careful page feel like a template. This section
+ * breaks the container entirely: the numerals run edge to edge at roughly a
+ * seventh of the viewport width, with nothing else competing.
+ *
+ * Deliberately still on the light ground rather than another dark block. There
+ * are already five dark sections, and a sixth would make dark ordinary; scale
+ * is the surprise here, not colour.
+ */
 export default function Numbers() {
   return (
-    <section aria-labelledby="numbers-heading" className="shell py-section">
+    <section aria-labelledby="numbers-heading" className="overflow-hidden py-section">
       <h2 id="numbers-heading" className="sr-only">
         The course in three numbers
       </h2>
@@ -24,27 +37,30 @@ export default function Numbers() {
         initial="hidden"
         whileInView="visible"
         viewport={VIEWPORT}
-        className="grid gap-12 sm:grid-cols-3 sm:gap-8"
+        className="grid gap-14 px-5 sm:grid-cols-3 sm:gap-6 sm:px-8 lg:gap-10 lg:px-12"
       >
         {STATS.map((stat) => (
-          <motion.div key={stat.label} variants={reveal}>
+          <motion.div key={stat.label} variants={reveal} className="min-w-0">
             <dt className="sr-only">{stat.label}</dt>
             <dd>
-              <span className="block font-serif text-[clamp(4rem,2.5rem+7vw,8rem)] leading-none">
+              {/* Optically aligned to the left edge of the numeral rather than
+                  its bearing, so the three read as one baseline row. */}
+              <span className="block font-serif leading-[0.82] tracking-[-0.03em] text-ink
+                               text-[clamp(5.5rem,15vw,13rem)]">
                 <CountUp to={stat.value} />
               </span>
+
               {/* The <dt> above already carries this label. Without aria-hidden a
                   screen reader announces it twice: "sessions, 20, sessions". */}
-              <span aria-hidden className="relative mt-4 inline-block pb-2 font-sans text-lg text-ink">
+              <span
+                aria-hidden
+                className="mt-6 block border-t-2 border-accent pt-4 font-sans text-[1.0625rem]
+                           font-medium text-ink"
+              >
                 {stat.label}
-                <motion.span
-                  aria-hidden
-                  variants={underline}
-                  style={{ transformOrigin: 'left center' }}
-                  className="absolute bottom-0 left-0 right-0 block h-[3px] rounded-full bg-accent"
-                />
               </span>
-              <span className="mt-4 block max-w-[26ch] text-[0.9375rem] leading-relaxed text-muted">
+
+              <span className="mt-3 block max-w-[30ch] text-[0.9375rem] leading-relaxed text-muted">
                 {stat.note}
               </span>
             </dd>
