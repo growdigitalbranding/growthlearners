@@ -42,6 +42,10 @@ const config: Config = {
       },
       transitionTimingFunction: {
         editorial: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        /* For something morphing in place rather than entering or leaving.
+           A strong ease-out front-loads the movement, which is right for an
+           arrival and wrong for a box changing size under settled content. */
+        'editorial-in-out': 'cubic-bezier(0.77, 0, 0.175, 1)',
       },
       keyframes: {
         marquee: {

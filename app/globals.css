@@ -264,6 +264,50 @@
   .disclosure-panel > * {
     overflow: hidden;
   }
+
+  /* The callback form becoming its confirmation — the same collapsing-track
+     mechanism as .disclosure-panel above, one panel per state: the form's
+     track closes as the confirmation's opens, so the card's height morphs with
+     nothing to measure and nothing to unmount. Swapping them by mounting and
+     unmounting instead snaps the card ~245px the instant the form leaves the
+     DOM, however carefully the two are crossfaded on the way out.
+
+     Deliberately NOT one two-track grid going `1fr 0fr` -> `0fr 1fr`. fr tracks
+     in an auto-height grid size to their own content, so the intermediate
+     `0.5fr 0.5fr` is not "half of each" and the browser snaps rather than
+     interpolating. One collapsing track per panel is the construction that
+     actually animates.
+
+     visibility, not just opacity, is what takes the closed form out of the
+     focus order and the accessibility tree, so a submitted form cannot be
+     tabbed back into. */
+  .form-swap {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      grid-template-rows 260ms theme('transitionTimingFunction.editorial-in-out'),
+      opacity 160ms theme('transitionTimingFunction.editorial'),
+      visibility 0s linear 260ms;
+  }
+
+  .form-swap[data-open='true'] {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    visibility: visible;
+    /* Enters a beat after the outgoing state has mostly gone, so the two read
+       as a hand-off rather than a dissolve. */
+    transition:
+      grid-template-rows 260ms theme('transitionTimingFunction.editorial-in-out'),
+      opacity 220ms theme('transitionTimingFunction.editorial') 60ms,
+      visibility 0s;
+  }
+
+  .form-swap > * {
+    min-height: 0;
+    overflow: hidden;
+  }
 }
 
 /* Short laptop viewports (1280x720, 1366x768) are common in India and are wide
@@ -362,6 +406,20 @@
   .disclosure-panel[data-open='true'] {
     transition:
       grid-template-rows 0.01ms linear,
+      visibility 0s !important;
+  }
+
+  .form-swap {
+    transition:
+      grid-template-rows 0.01ms linear,
+      opacity 150ms linear,
+      visibility 0s linear 150ms !important;
+  }
+
+  .form-swap[data-open='true'] {
+    transition:
+      grid-template-rows 0.01ms linear,
+      opacity 150ms linear,
       visibility 0s !important;
   }
 

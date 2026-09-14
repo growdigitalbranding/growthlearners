@@ -110,19 +110,11 @@ export default function FinalCta() {
                 Three fields. We will call within one working day.
               </p>
 
-              {status === 'done' ? (
-                <p
-                  role="status"
-                  className="mt-7 flex items-start gap-3 rounded-xl border border-accent/40 bg-accent/10 p-5 text-bg"
-                >
-                  <Check size={20} strokeWidth={2.4} className="mt-0.5 shrink-0 text-accent" aria-hidden />
-                  <span>
-                    Got it. We will call you within one working day. If you would rather not wait,
-                    message us on WhatsApp.
-                  </span>
-                </p>
-              ) : (
-                <form onSubmit={onSubmit} noValidate className="mt-7 space-y-4">
+              <div className="form-swap mt-7" data-open={status !== 'done'}>
+                <div>
+                  {/* pb-1 keeps the submit button's focus ring inside the
+                      panel, which overflow: hidden would otherwise clip. */}
+                  <form onSubmit={onSubmit} noValidate className="space-y-4 pb-1">
                   <div>
                     <label htmlFor="name" className="mb-2 block text-sm text-bg/70">
                       Your name
@@ -210,8 +202,24 @@ export default function FinalCta() {
                       'Request a callback'
                     )}
                   </button>
-                </form>
-              )}
+                  </form>
+                </div>
+              </div>
+
+              <div className="form-swap" data-open={status === 'done'}>
+                <div>
+                  <p
+                    role="status"
+                    className="flex items-start gap-3 rounded-xl border border-accent/40 bg-accent/10 p-5 text-bg"
+                  >
+                    <Check size={20} strokeWidth={2.4} className="mt-0.5 shrink-0 text-accent" aria-hidden />
+                    <span>
+                      Got it. We will call you within one working day. If you would rather not wait,
+                      message us on WhatsApp.
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
