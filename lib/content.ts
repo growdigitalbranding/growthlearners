@@ -519,32 +519,23 @@ export type Teacher = {
  */
 export const TEACHERS: Teacher[] = [
   {
-    // The profile URL is real and supplied. Everything else on this row is
-    // still the prompt, not the answer — the name could not be read from the
-    // page (LinkedIn blocks automated fetches) and guessing it from the URL
-    // slug is not good enough for the one section a parent checks.
+    // One trainer takes the whole course, confirmed. The two sample rows that
+    // used to sit beside this one implied a three-person faculty and are gone:
+    // the section is stronger claiming one person for twenty evenings than
+    // three people with nothing checkable between them.
+    //
+    // The profile URL is real. The name, role and credential are still the
+    // prompt rather than the answer — LinkedIn blocks automated fetches, so
+    // none of it could be read, and a name guessed from a URL slug is not good
+    // enough for the one section a parent checks.
     name: 'Sample entry, replace me',
-    role: 'Performance marketing lead, Growthlearners',
+    role: 'Lead trainer, Growthlearners',
     credential:
       'Write what this person actually runs, for whom, at what scale. Something a parent could check on a phone call. Not "expert in performance marketing".',
-    teaches: 'Stage 04, sessions 16 to 20',
+    teaches: `All ${TOTAL_SESSIONS} sessions`,
     linkedin: 'https://www.linkedin.com/in/venugopalbalajir/',
-    placeholder: true,
-  },
-  {
-    name: 'Sample entry, replace me',
-    role: 'Creative director, Growthlearners',
-    credential:
-      'Same here. Campaigns shipped, brands worked with, formats produced. Specifics are the whole point of this section.',
-    teaches: 'Stage 02 and Stage 03, sessions 6 to 15',
-    placeholder: true,
-  },
-  {
-    name: 'Sample entry, replace me',
-    role: 'Strategy, Growthlearners',
-    credential:
-      'A third is optional. Two people with real credentials beat three with vague ones.',
-    teaches: 'Stage 01, sessions 1 to 5',
+    // Drop the portrait in at this path and the card picks it up.
+    // photo: '/team/venugopal.webp',
     placeholder: true,
   },
 ];

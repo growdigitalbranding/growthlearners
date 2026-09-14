@@ -28,7 +28,11 @@ export default function Teachers() {
     <section id="teachers" className="shell py-section">
       <SectionHeading
         title="Who teaches it"
-        lead={`The same people who run campaigns for paying clients out of ${SITE.city}. You will be in a room with them for ${SITE.sessions} evenings, not watching them on a screen.`}
+        lead={
+          single
+            ? `The person who runs campaigns for paying clients out of ${SITE.city}, and who takes every one of the ${SITE.sessions} sessions. You will be in a room with them, not watching a screen.`
+            : `The same people who run campaigns for paying clients out of ${SITE.city}. You will be in a room with them for ${SITE.sessions} evenings, not watching them on a screen.`
+        }
       />
 
       {TEACHERS.some((teacher) => teacher.placeholder) && (

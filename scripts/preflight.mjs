@@ -26,11 +26,15 @@ const add = (severity, area, problem, fix) => checks.push({ severity, area, prob
 
 // Sample rows carry `placeholder: true`. Counting them is how this knows the
 // difference between "not built yet" and "built, still fake".
-const countIn = (arrayName, typeName) => {
+// Rows are counted by their first field, not by counting `{`. A template
+// literal anywhere in a row — `All ${TOTAL_SESSIONS} sessions`, say — carries a
+// brace of its own, and counting those reported one trainer as two.
+const countIn = (arrayName, typeName, rowKey) => {
   const start = content.indexOf(`export const ${arrayName}: ${typeName}`);
   if (start === -1) return { total: 0, sample: 0 };
   const slice = content.slice(start, content.indexOf('\n];', start));
-  return { total: (slice.match(/\{/g) || []).length, sample: (slice.match(/placeholder: true/g) || []).length };
+  const rows = slice.match(new RegExp(`^\\s*(?:\\{\\s*)?${rowKey}:`, 'gm')) || [];
+  return { total: rows.length, sample: (slice.match(/placeholder: true/g) || []).length };
 };
 
 // ── Things a visitor can see ────────────────────────────────────────────────
@@ -52,7 +56,7 @@ if (/lat: 11\.0168, lng: 76\.9558/.test(site)) {
 }
 
 // ── Trust ───────────────────────────────────────────────────────────────────
-const teachers = countIn('TEACHERS', 'Teacher[]');
+const teachers = countIn('TEACHERS', 'Teacher[]', 'name');
 if (teachers.total === 0) {
   add('blocker', 'Trust', 'Nobody is named as a teacher. The page twice promises "a straight answer from someone who teaches the course" without saying who.',
       'Add one entry to TEACHERS in lib/content.ts and the section renders itself.');
@@ -60,7 +64,7 @@ if (teachers.total === 0) {
   add('blocker', 'Trust', `${teachers.sample} of the ${teachers.total} teachers are sample entries reading "replace me", and the section is showing a "sample content" badge.`,
       'Put in real names, real roles, and credentials a parent could check on a phone call. Then drop the `placeholder` flag.');
 }
-const work = countIn('WORK', 'WorkItem[]');
+const work = countIn('WORK', 'WorkItem[]', 'title');
 if (work.total === 0) {
   add('blocker', 'Student work', 'The gallery is empty, so it does not render. The whole design direction rests on it: the page sells the course by showing what students make.',
       'Put real student work in public/work/ and list it in WORK.');
@@ -83,7 +87,7 @@ if (work.total === 0) {
   }
 }
 
-const testimonials = countIn('TESTIMONIALS', 'Testimonial[]');
+const testimonials = countIn('TESTIMONIALS', 'Testimonial[]', 'quote');
 if (testimonials.total === 0) {
   add('warning', 'Trust', 'No social proof anywhere. Every landing-page pattern for a course puts it before the price.',
       'Add real quotes to TESTIMONIALS. A parent who paid is worth three student quotes.');
