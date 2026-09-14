@@ -343,7 +343,7 @@ export const CAREERS = [
   {
     door: 'Get hired',
     who: 'Students and working marketers',
-    why: 'Leave with work to show rather than a certificate to mention — or keep the job you have and do it in a fraction of the time, taking on the creative half as well.',
+    why: 'Leave with work to show rather than a certificate to mention. Or keep the job you have and do it in a fraction of the time, taking on the creative half as well.',
     roles: ['AI marketing specialist', 'Digital marketing executive', 'Content strategist', 'Performance marketer'],
   },
   {
@@ -361,7 +361,7 @@ export const CAREERS = [
   {
     door: 'Build your brand',
     who: 'Creators',
-    why: 'Produce more, and produce the things you could never have shot — without a crew, a studio or a budget.',
+    why: 'Produce more, and produce the things you could never have shot without a crew, a studio or a budget.',
     roles: ['Creator', 'Consultant', 'Educator'],
   },
 ];

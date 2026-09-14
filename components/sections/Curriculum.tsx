@@ -45,7 +45,7 @@ export default function Curriculum() {
               <span className="eyebrow text-accent-deep">{week.label}</span>
               <h3 className="font-serif text-h3">{week.title}</h3>
               <span className="ml-auto font-sans text-sm tabular text-muted">
-                Sessions {week.sessions[0].n}–{week.sessions[week.sessions.length - 1].n}
+                Sessions {week.sessions[0].n}-{week.sessions[week.sessions.length - 1].n}
               </span>
             </motion.div>
 
