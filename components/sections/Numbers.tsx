@@ -6,10 +6,15 @@ import { reveal, stagger, VIEWPORT } from '@/lib/motion';
 import { SITE } from '@/lib/site';
 import { TOTAL_SESSIONS } from '@/lib/content';
 
+// Ordered so the two 8s are not neighbours. Seats and deliverables are both
+// 8, and at this size two identical numerals side by side read as a rendering
+// fault rather than two facts. Putting the sessions count between them fixes
+// it, and the sequence earns its keep anyway: what you leave with, how long it
+// takes, why the room is small.
 const STATS = [
+  { value: SITE.deliverables, label: 'things you build', note: 'Every one of them yours, with the logins.' },
   { value: TOTAL_SESSIONS, label: 'sessions', note: 'Five evenings a week, for four weeks.' },
   { value: SITE.seats, label: 'seats', note: 'So someone can sit with you when your campaign is live.' },
-  { value: SITE.deliverables, label: 'things you build', note: 'Every one of them yours, with the logins.' },
 ];
 
 /**

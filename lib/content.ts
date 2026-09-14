@@ -670,6 +670,6 @@ export const FAQS = [
   },
   {
     q: `Why only ${SITE.seats} seats?`,
-    a: 'Because in Stage 03 and Stage 04 someone has to sit with you while your video is rendering wrong and your campaign is live and spending. Above roughly fifteen people that stops being possible and the course quietly turns into a lecture. We would rather run another batch.',
+    a: `Because in Stage 03 and Stage 04 someone has to sit with you while your video is rendering wrong and your campaign is live and spending. Past ${SITE.seats} or so that stops being possible and the course quietly turns into a lecture. We would rather run another batch.`,
   },
 ];

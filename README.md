@@ -25,18 +25,21 @@ be overridden with an environment variable instead of a code edit (see
 | Street address, postcode, map link, lat/long | `SITE.streetAddress`, `SITE.geo`, `SITE.mapUrl` | **placeholder** — also feeds `LocalBusiness` JSON-LD, so wrong data here is an SEO liability |
 | Fee | `SITE.fee`, `SITE.feeDisplay` | ₹18,999 — **confirm the price point** |
 | Next batch date | `SITE.batchStartISO` | 2026-10-05 — **confirm**. The display date, the OG image and the `CourseInstance` schema all derive from this one value |
-| Seat count | `SITE.seats` | 15 — see the note below |
+| Seat count | `SITE.seats` | 8 — confirmed by Growthlearners, see the note below |
 | Social handles | `SITE.social` | **placeholder** |
 | Email | `SITE.email` | **placeholder** |
 | GTM container | `NEXT_PUBLIC_GTM_ID` | empty — analytics stays off until set |
 | Callback destination | `CALLBACK_WEBHOOK_URL` | empty — see *Callback form* below |
 | Favicon | `app/icon.svg` | approximation — see `public/brand/README.md` |
 
-**On the seat count:** the brief said "8 seats" in the product summary but
-"15 seats" in both the hero status line and the numbers section. We went with
-15, since that is what the two pieces of specified copy say. Change
-`SITE.seats` to flip it everywhere — hero, numbers, final CTA, the FAQ answer
-and the `Course` schema all read that one constant.
+**On the seat count:** the brief contradicted itself, saying "8 seats" in the
+product summary and "15 seats" in both the hero status line and the numbers
+section. We ran with 15 until Growthlearners confirmed 8 is the real number,
+which also matches the photograph of the room. Change `SITE.seats` to flip it
+everywhere — hero, numbers, sticky bar, final CTA, the classroom lede, the FAQ
+question and answer, the OG image, the meta description and the `Course` schema
+all read that one constant. Nothing spells the number out in prose any more, so
+there is nothing left to miss.
 
 ### Social proof
 

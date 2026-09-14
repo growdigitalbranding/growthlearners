@@ -16,10 +16,12 @@
  *    social                   real handles
  *    gtmId                    real GTM container, or analytics stays off
  *
- *  Note on seats: the brief said "8 seats" in the product summary but "15 seats"
- *  in both the hero status line and the numbers section. We went with 15, since
- *  that is what the two pieces of specified copy say. Change this one constant
- *  to flip it everywhere — hero, numbers, FAQ and Course JSON-LD all read it.
+ *  Note on seats: the brief contradicted itself, saying "8 seats" in the product
+ *  summary and "15 seats" in the hero status line and the numbers section. We
+ *  ran with 15 until Growthlearners confirmed 8 is the real number, which is
+ *  also what the photograph of the room supports. Change this one constant to
+ *  flip it everywhere — hero, numbers, sticky bar, final CTA, classroom lede,
+ *  FAQ, OG image, meta description and Course JSON-LD all read it.
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
@@ -51,7 +53,7 @@ export const SITE = {
   mapUrl: 'https://maps.google.com/?q=Growthlearners+Coimbatore',
   geo: { lat: 11.0168, lng: 76.9558 },
 
-  seats: 15,
+  seats: 8,
   sessions: 20,
   deliverables: 8,
   durationWeeks: 4,
