@@ -139,6 +139,12 @@ export default function Hero() {
             </span>
             Offline classroom
           </span>
+          <span className="whitespace-nowrap tabular text-ink">
+            <span className="text-line-strong" aria-hidden>
+              ·{' '}
+            </span>
+            {SITE.feeDisplay}
+          </span>
           <span className="whitespace-nowrap tabular">
             <span className="text-line-strong" aria-hidden>
               ·{' '}

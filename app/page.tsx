@@ -23,12 +23,20 @@ import Footer from '@/components/sections/Footer';
 import StickyCta from '@/components/ui/StickyCta';
 
 /**
- * Section order follows the argument, not the feature list:
+ * Section order follows the questions a buyer actually asks, in the order they
+ * ask them, rather than the order the argument would prefer to make them:
  *
- *   hook → what changed → why not the others → how the month runs →
- *   what you'll make → who directs it → the tools → what you keep →
- *   the syllabus in full → who it's for → why a room → where it leads →
- *   the numbers → the honest bit → who teaches → proof → price → questions → ask
+ *   what is this → what do I walk out with → what changed → why not a cheaper
+ *   online course → is it for me → how does the month run → what will I make →
+ *   who teaches it → does it work → then the detail: who directs, the tools,
+ *   the portfolio, the full syllabus, the room, where it leads, the numbers →
+ *   the honest caveats → the price → questions → ask
+ *
+ * "Is it for me" and the trust pair (who teaches it, does it work) used to sit
+ * at screens 18, 26 and 28 of a 36-screen page. Nobody scrolls that far to
+ * find out whether a course is for them. The price is answered twice: once in
+ * the hero status line for the people who only want the number, and once in
+ * full where it can be justified.
  */
 export default function Page() {
   return (
@@ -42,19 +50,19 @@ export default function Page() {
         <ProofStrip />
         <Pillars />
         <Comparison />
+        <Audiences />
         <TheMonth />
         <Work />
+        <Teachers />
+        <Proof />
         <CreativeDirector />
         <Stack />
         <Portfolio />
         <Curriculum />
-        <Audiences />
         <Classroom />
         <Careers />
         <Numbers />
         <Outcomes />
-        <Teachers />
-        <Proof />
         <Fee />
         <Faq />
         <FinalCta />
