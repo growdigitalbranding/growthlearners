@@ -519,24 +519,20 @@ export type Teacher = {
  */
 export const TEACHERS: Teacher[] = [
   {
-    // One trainer takes the whole course, confirmed. The two sample rows that
-    // used to sit beside this one implied a three-person faculty and are gone:
-    // the section is stronger claiming one person for twenty evenings than
-    // three people with nothing checkable between them.
-    //
-    // The profile URL is real. The name, role and credential are still the
-    // prompt rather than the answer — LinkedIn blocks automated fetches, so
-    // none of it could be read, and a name guessed from a URL slug is not good
-    // enough for the one section a parent checks.
-    name: 'Sample entry, replace me',
+    // One trainer takes the whole course. The two sample rows that used to sit
+    // beside this one implied a three-person faculty and are gone: the section
+    // is stronger claiming one person for twenty evenings than three with
+    // nothing checkable between them.
+    name: 'Venugopal Balaji R',
+    // What they are on this course. The job that earns the trust sits in the
+    // credential below, where it can be checked rather than just asserted.
     role: 'Lead trainer, Growthlearners',
     credential:
-      'Write what this person actually runs, for whom, at what scale. Something a parent could check on a phone call. Not "expert in performance marketing".',
+      'Head of Marketing at Kisslead Technologies. Runs digital campaigns for 20+ businesses, about ₹1 crore a year in ad spend.',
     teaches: `All ${TOTAL_SESSIONS} sessions`,
     linkedin: 'https://www.linkedin.com/in/venugopalbalajir/',
     // Drop the portrait in at this path and the card picks it up.
     // photo: '/team/venugopal.webp',
-    placeholder: true,
   },
 ];
 
