@@ -4,10 +4,14 @@ import { TOTAL_SESSIONS, WEEKS } from './content';
 /**
  * LocalBusiness + Course JSON-LD, both pinned to Coimbatore.
  *
- * The address and geo coordinates come from lib/site.ts and are placeholders
- * until the real ones are filled in — structured data that disagrees with the
- * Google Business Profile is worse than no structured data, so this must be
- * corrected before launch.
+ * The address comes from lib/site.ts and is the real one. Structured data that
+ * disagrees with the Google Business Profile is worse than no structured data,
+ * so it is punctuated to match the profile exactly.
+ *
+ * `geo` is emitted only when SITE.geo is set. It is optional in the vocabulary,
+ * and with it absent Google geocodes the postal address instead of trusting a
+ * coordinate pair — which is the behaviour we want while the real lat/long is
+ * still unknown.
  */
 export function buildSchema() {
   const orgId = `${SITE.url}/#organisation`;
@@ -29,11 +33,15 @@ export function buildSchema() {
       postalCode: SITE.postalCode,
       addressCountry: SITE.country,
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: SITE.geo.lat,
-      longitude: SITE.geo.lng,
-    },
+    ...(SITE.geo
+      ? {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: SITE.geo.lat,
+            longitude: SITE.geo.lng,
+          },
+        }
+      : {}),
     areaServed: {
       '@type': 'City',
       name: SITE.city,

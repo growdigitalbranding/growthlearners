@@ -7,9 +7,7 @@
  *  is a single edit, and each can be overridden by an env var at deploy time
  *  (see .env.example) without touching code.
  *
- *    whatsapp / phoneDisplay  real number — the page's primary conversion
- *    address / mapUrl         real street address — this also feeds LocalBusiness
- *                             JSON-LD, so wrong data here is an SEO liability
+ *    geo                      real lat/long — the only address field still unset
  *    fee                      confirm the price point
  *    batchStartISO            confirm the next batch date
  *    seats                    see note below
@@ -38,20 +36,34 @@ export const SITE = {
   url: env.siteUrl || 'https://growthlearners.in',
 
   /** Digits only, full international format — used to build wa.me links. */
-  whatsapp: env.whatsapp || '919000000000',
-  phoneDisplay: env.phoneDisplay || '+91 90000 00000',
+  whatsapp: env.whatsapp || '919626622296',
+  phoneDisplay: env.phoneDisplay || '+91 96266 22296',
   email: 'hello@growthlearners.in',
 
   city: 'Coimbatore',
   region: 'Tamil Nadu',
   country: 'IN',
-  postalCode: '641004',
-  // Shaped like a real address so the footer and schema lay out correctly,
-  // and worded so it can never be mistaken for one. Invented building names
-  // are somebody's real address somewhere, so this stays obviously blank.
-  streetAddress: 'Floor, building and street (replace before launch), RS Puram',
-  mapUrl: 'https://maps.google.com/?q=Growthlearners+Coimbatore',
-  geo: { lat: 11.0168, lng: 76.9558 },
+  postalCode: '641044',
+  // Punctuated exactly as the Google Business Profile has it. Structured data
+  // that disagrees with the profile is worse than none, and "St" rather than
+  // "Street" is the sort of difference that causes the disagreement.
+  streetAddress: '89, NGN St, Siddhapudur, New Siddhapudur',
+  mapUrl:
+    'https://www.google.com/maps/search/?api=1&query=' +
+    encodeURIComponent('89, NGN St, Siddhapudur, New Siddhapudur, Coimbatore, Tamil Nadu 641044'),
+
+  /**
+   * Real coordinates, or null. Never a guess.
+   *
+   * This was the Coimbatore city-centre default, about three kilometres from
+   * Siddhapudur. That was harmless while the street address was obviously a
+   * placeholder and nothing could ship; with a real address above it, it would
+   * have put a precise pin on the wrong building. A wrong pin is worse than no
+   * pin, because with `geo` absent Google geocodes the postal address instead
+   * — which is now correct. So the schema omits the block entirely until this
+   * is filled in. Right-click the building in Google Maps to get the pair.
+   */
+  geo: null as { lat: number; lng: number } | null,
 
   seats: 8,
   sessions: 20,

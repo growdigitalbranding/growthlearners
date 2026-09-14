@@ -21,8 +21,9 @@ be overridden with an environment variable instead of a code edit (see
 
 | What | Where | Status |
 |---|---|---|
-| WhatsApp number and display phone | `SITE.whatsapp`, `SITE.phoneDisplay` | **placeholder** `+91 90000 00000` — this is the page's primary conversion, so it is the first thing to change |
-| Street address, postcode, map link, lat/long | `SITE.streetAddress`, `SITE.geo`, `SITE.mapUrl` | **placeholder** — also feeds `LocalBusiness` JSON-LD, so wrong data here is an SEO liability |
+| WhatsApp number and display phone | `SITE.whatsapp`, `SITE.phoneDisplay` | real — `+91 96266 22296`, on every CTA, the `tel:` link and the schema |
+| Street address, postcode, map link | `SITE.streetAddress`, `SITE.postalCode`, `SITE.mapUrl` | real — punctuated to match the Google Business Profile, since `LocalBusiness` JSON-LD reads it |
+| Map coordinates | `SITE.geo` | **unset** — `null`, so the schema omits the `geo` block rather than publish a guess and Google geocodes the address instead. An exact pin is still better |
 | Fee | `SITE.fee`, `SITE.feeDisplay` | ₹18,999 — **confirm the price point** |
 | Next batch date | `SITE.batchStartISO` | 2026-10-05 — **confirm**. The display date, the OG image and the `CourseInstance` schema all derive from this one value |
 | Seat count | `SITE.seats` | 8 — confirmed by Growthlearners, see the note below |

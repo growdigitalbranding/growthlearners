@@ -38,21 +38,27 @@ const countIn = (arrayName, typeName, rowKey) => {
 };
 
 // ── Things a visitor can see ────────────────────────────────────────────────
-if (!env.NEXT_PUBLIC_WHATSAPP && /whatsapp: env\.whatsapp \|\| '919000000000'/.test(site)) {
-  add('blocker', 'Phone', 'The WhatsApp number is still 919000000000. It is live on every CTA and inside the Course JSON-LD.',
+// Matched on the shape of a placeholder rather than on one exact string. The
+// address check used to test for `streetAddress: 'RS Puram, Coimbatore'`, which
+// stopped being the placeholder at some point without anyone updating the
+// regex, so the blocker silently never fired again. A check that only works
+// until someone edits the line it describes is not a check.
+if (!env.NEXT_PUBLIC_WHATSAPP && /whatsapp: env\.whatsapp \|\| '9190{8,}'/.test(site)) {
+  add('blocker', 'Phone', 'The WhatsApp number is still a row of zeroes. It is live on every CTA and inside the Course JSON-LD.',
       'Set NEXT_PUBLIC_WHATSAPP, or change SITE.whatsapp in lib/site.ts.');
 }
-if (!env.NEXT_PUBLIC_PHONE_DISPLAY && /\+91 90000 00000/.test(site)) {
-  add('blocker', 'Phone', 'The displayed number reads "+91 90000 00000" in the footer and the final CTA.',
+if (!env.NEXT_PUBLIC_PHONE_DISPLAY && /phoneDisplay: env\.phoneDisplay \|\| '\+91 90{4,} 0{4,}'/.test(site)) {
+  add('blocker', 'Phone', 'The displayed number is still a row of zeroes in the footer and the final CTA.',
       'Set NEXT_PUBLIC_PHONE_DISPLAY, or change SITE.phoneDisplay.');
 }
-if (/streetAddress: 'RS Puram, Coimbatore'/.test(site)) {
-  add('blocker', 'Address', 'The address has no building or street. It also feeds LocalBusiness JSON-LD, so it has to match your Google Business Profile exactly.',
-      'Set SITE.streetAddress, SITE.postalCode and SITE.geo to the real location.');
+if (/streetAddress: '[^']*(replace before launch|TODO|placeholder|XXX)/i.test(site)
+    || /streetAddress: ''/.test(site)) {
+  add('blocker', 'Address', 'The street address is still a placeholder. It feeds LocalBusiness JSON-LD, so it has to match your Google Business Profile exactly.',
+      'Set SITE.streetAddress and SITE.postalCode to the real location.');
 }
-if (/lat: 11\.0168, lng: 76\.9558/.test(site)) {
-  add('warning', 'Address', 'Map coordinates are the Coimbatore city centre default, not your building.',
-      'Right-click your location in Google Maps, copy the coordinates into SITE.geo.');
+if (/geo: null as/.test(site)) {
+  add('warning', 'Address', 'No map coordinates. The schema omits the geo block rather than publish a guess, so Google geocodes the postal address instead. That works, but an exact pin is better.',
+      'Right-click your building in Google Maps, copy the pair into SITE.geo as { lat, lng }.');
 }
 
 // ── Trust ───────────────────────────────────────────────────────────────────
