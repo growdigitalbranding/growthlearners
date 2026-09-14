@@ -286,17 +286,7 @@ export const TOOL_STRIP = [
   'Kling', 'Runway', 'ElevenLabs', 'HeyGen', 'CapCut', 'Make', 'n8n',
 ] as const;
 
-/** Section 08 — what is in the portfolio at the end. */
-export const PORTFOLIO = [
-  { n: 1, title: 'AI marketing research', note: 'Audience, market and competitor, on a real business.' },
-  { n: 2, title: '30-day content strategy', note: 'A calendar with a reason behind every slot.' },
-  { n: 3, title: 'Brand creative system', note: 'The rules that make generated work look like one brand.' },
-  { n: 4, title: 'AI advertising campaign', note: 'A full creative set built from one angle.' },
-  { n: 5, title: 'AI video advertisement', note: 'Storyboarded, generated, cut and scored.' },
-  { n: 6, title: 'Landing page', note: 'Live, on a domain in your name.' },
-  { n: 7, title: 'Marketing automation', note: 'Ad to CRM to WhatsApp, with nobody touching it.' },
-  { n: 8, title: 'Complete client campaign', note: 'All of it, running, with the numbers attached.' },
-];
+
 
 /** Section 09 — who this is for. */
 export const AUDIENCES = [
@@ -337,16 +327,24 @@ export const SERVICES = [
 ];
 
 /** The eight things you walk out owning. Deliverables, not logos. */
-export const DELIVERABLES = [
-  'Research pack',
-  'Content strategy',
-  'Brand creative system',
-  'AI ad campaign',
-  'AI video ad',
-  'Ad film',
-  'Landing page',
-  'Automation',
-] as const;
+/** Section 08 — what is in the portfolio at the end. */
+export const PORTFOLIO = [
+  { n: 1, title: 'AI marketing research', note: 'Audience, market and competitor, on a real business.' },
+  { n: 2, title: '30-day content strategy', note: 'Every slot planned, dated and justified.' },
+  { n: 3, title: 'Brand creative system', note: 'The rules that make generated work look like one brand.' },
+  { n: 4, title: 'AI advertising campaign', note: 'A full creative set built from one angle.' },
+  { n: 5, title: 'AI video advertisement', note: 'Storyboarded, generated, cut and scored.' },
+  { n: 6, title: 'Landing page', note: 'Live, on a domain in your name.' },
+  { n: 7, title: 'Marketing automation', note: 'A lead travels the whole way with nobody touching it.' },
+  { n: 8, title: 'Complete client campaign', note: 'All of it, running, with the numbers attached.' },
+];
+
+/**
+ * The strip near the top is a preview of the portfolio section further down,
+ * so it takes its names from the same source. Two lists of the same eight
+ * things in slightly different words read as padding.
+ */
+export const DELIVERABLES = PORTFOLIO.map((project) => project.title);
 
 export const PROBLEM = {
   left: {
@@ -602,7 +600,7 @@ export const FAQS = [
   },
   {
     q: 'What happens after the course?',
-    a: 'You keep everything: the logins, the accounts, the work inside them and the portfolio. You get 30 days of WhatsApp support for the questions that only come up once you are on your own. The strongest two or three students in each batch are offered a paid internship with our agency team.',
+    a: 'You keep everything: the logins, the accounts, the work inside them and the portfolio. You get 30 days of WhatsApp support for the questions that only come up once you are on your own. The internship described in the outcomes section is offered at the end of every batch.',
   },
   {
     q: `Why only ${SITE.seats} seats?`,

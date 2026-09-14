@@ -8,6 +8,11 @@ import { reveal, stagger, VIEWPORT_TALL } from '@/lib/motion';
 import { track } from '@/lib/analytics';
 
 /**
+ * The reference, not the narrative. The journey section above carries what
+ * changes in each stage and what you leave with; this one carries the detail
+ * nobody else does: every session, its objective and its tools. Printing the
+ * stage summaries in both places made the reader read the same paragraph twice.
+ *
  * Complete and boring on purpose. This is the section a parent reads and a
  * serious applicant scrolls twice, so nothing is summarised away: every one of
  * the 20 sessions is here with its objective and the tools it uses.
@@ -44,10 +49,6 @@ export default function Curriculum() {
               </span>
             </motion.div>
 
-            <motion.p variants={reveal} className="mt-5 max-w-3xl leading-relaxed text-muted">
-              {week.summary}
-            </motion.p>
-
             <motion.div variants={reveal} className="mt-7">
               {week.sessions.map((session) => (
                 <Disclosure
@@ -81,13 +82,6 @@ export default function Curriculum() {
               ))}
             </motion.div>
 
-            <motion.p
-              variants={reveal}
-              className="mt-6 flex flex-wrap items-baseline gap-x-2 border-l-2 border-accent pl-4 text-[0.9375rem] text-muted"
-            >
-              <span className="font-medium text-ink">End of {week.label.toLowerCase()}:</span>
-              {week.checkpoint}
-            </motion.p>
           </motion.div>
         ))}
       </div>

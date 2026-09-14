@@ -5,6 +5,9 @@ import SectionHeading from './SectionHeading';
 import { WEEKS } from '@/lib/content';
 
 /**
+ * The narrative. Four stages, what changes in each, and what you leave with.
+ * The full session list is the curriculum accordion's job, not this one's.
+ *
  * The centrepiece. On desktop, ScrollTrigger pins the section and the four week
  * cards advance horizontally while a progress rail fills in accent.
  *
@@ -135,16 +138,11 @@ export default function TheMonth() {
 
               <h3 className="mt-5 text-balance font-serif text-h3">{week.title}</h3>
 
-              <ol className="mt-6 space-y-2.5">
-                {week.sessions.map((session) => (
-                  <li key={session.n} className="flex gap-3.5 text-[0.9375rem] leading-relaxed">
-                    <span className="w-5 shrink-0 tabular text-muted">
-                      {String(session.n).padStart(2, '0')}
-                    </span>
-                    <span className="text-ink">{session.title}</span>
-                  </li>
-                ))}
-              </ol>
+              {/* Deliberately the summary, not the session list. The full list
+                  lives in the curriculum accordion below, and printing all
+                  twenty titles in both places made the reader read the same
+                  thing twice. */}
+              <p className="mt-6 leading-relaxed text-muted">{week.summary}</p>
 
               <p className="mt-auto flex flex-wrap gap-x-2 border-l-2 border-accent pl-4 pt-6 text-[0.875rem] text-muted">
                 <span className="font-medium text-ink">You leave with:</span>
