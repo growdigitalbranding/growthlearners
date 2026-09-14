@@ -15,7 +15,7 @@ export default function Problem() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="why" className="shell py-section">
+    <section id="why" className="shell py-section-tight">
       <h2 className="sr-only">Why this course is built the way it is</h2>
 
       <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">

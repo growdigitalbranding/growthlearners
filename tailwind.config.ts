@@ -39,6 +39,11 @@ const config: Config = {
       },
       spacing: {
         section: 'clamp(4.5rem, 3rem + 7vw, 9rem)',
+        /* For sections that work as punctuation rather than chapters. Every
+           section using the same padding is half of why the page read as one
+           layout repeated: ten of eighteen came out within ten percent of a
+           single screen tall. */
+        'section-tight': 'clamp(3rem, 2rem + 4vw, 5.5rem)',
       },
       transitionTimingFunction: {
         editorial: 'cubic-bezier(0.16, 1, 0.3, 1)',

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import Image from 'next/image';
 import SectionHeading from './SectionHeading';
 import { PIPELINE } from '@/lib/content';
 import { reveal, stagger, VIEWPORT_TALL } from '@/lib/motion';
@@ -33,12 +34,13 @@ export default function CreativeDirector() {
           lead="Anyone can generate an image. The job is knowing what the image has to do, and being able to say why the third version is the right one."
         />
 
+        <div className="mt-16 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
         <motion.ol
           variants={stagger}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT_TALL}
-          className="mt-16 grid gap-x-8 gap-y-3 md:grid-cols-[auto_1fr]"
+          className="grid gap-x-8 gap-y-3 md:grid-cols-[auto_1fr]"
         >
           {PIPELINE.map((stage, index) => {
             const last = index === PIPELINE.length - 1;
@@ -77,6 +79,32 @@ export default function CreativeDirector() {
             );
           })}
         </motion.ol>
+
+          {/* The output of the exact pipeline listed to the left, so the
+              section shows the thing it is describing instead of only naming
+              the steps. Lazy, below lg it would only push the list down. */}
+          <motion.figure
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT_TALL}
+            className="hidden lg:block"
+          >
+            <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10">
+              <Image
+                src="/work/film-pringles.jpg"
+                alt=""
+                fill
+                loading="lazy"
+                sizes="20rem"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-4 text-[0.9375rem] leading-relaxed text-bg/55">
+              A frame from a student brand film, built through exactly these seven steps.
+            </figcaption>
+          </motion.figure>
+        </div>
       </div>
     </section>
   );
