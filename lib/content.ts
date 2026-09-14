@@ -328,6 +328,24 @@ export const CLASSROOM = [
 ];
 
 /**
+ * The actual room in Coimbatore, photographed.
+ *
+ * "In person" is the only claim on this page a video course cannot copy, and
+ * until now it was argued entirely in prose. This is the evidence for it.
+ *
+ * It has to stay the real room. A stock classroom would be worse than none:
+ * anyone who then walks in has been misled before they arrived, and a reader
+ * who spots the stock is told the rest of the page is decorated too.
+ *
+ * `position` controls the crop if the photo is ever swapped for one that is
+ * not 4:5 — the frame it sits in is 4:5, so this one is shown whole.
+ */
+export const CLASSROOM_PHOTO: { src: string; alt: string; position?: string } | null = {
+  src: '/classroom/room.webp',
+  alt: 'A long white table down the middle of a narrow room, orange chairs along one side and black chairs along the other, acoustic panels and wood slats on the walls, two studio lights on stands at the far end, and a sign reading Focus, Plan, Execute.',
+};
+
+/**
  * Sections 09 + 11 of the brief, now one — who this is for, and the door each
  * of them leaves by.
  *

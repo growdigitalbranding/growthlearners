@@ -96,6 +96,15 @@ if (testimonials.total === 0) {
       'Replace with verbatim quotes from real students and drop the `placeholder` flag.');
 }
 
+// The one claim on this page that a video course cannot copy is "in person",
+// and right now it is argued entirely in prose. A warning rather than a
+// blocker: the section is honest and complete without a photograph, and a
+// stock one would be worse than none.
+if (/^export const CLASSROOM_PHOTO[^=]*=\s*null/m.test(content)) {
+  add('warning', 'Trust', 'No photograph of the classroom. "In person in Coimbatore" is the whole differentiator and the reader has to take the room on trust.',
+      'Put a real photo of the room in public/classroom/ and set CLASSROOM_PHOTO in lib/content.ts. It has to be your room, not a stock classroom.');
+}
+
 // ── Things that silently do nothing ─────────────────────────────────────────
 if (!env.NEXT_PUBLIC_GTM_ID) {
   add('warning', 'Analytics', 'No GTM container, so GA4 and the Meta Pixel never load and none of the conversion events are recorded.',
