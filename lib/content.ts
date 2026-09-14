@@ -283,10 +283,11 @@ export const WORK: WorkItem[] = [
   // owner's explicit instruction after that was raised. The `kind` says "spec"
   // so the page never implies it was commissioned work.
   { title: 'Pringles, brand film', kind: 'Brand film (spec)', student: '', src: '/work/film-pringles.mp4', poster: '/work/film-pringles.jpg', type: 'video', ratio: '16/9' },
-  // A student's own Google Ads account, confirmed as theirs. The one artefact
-  // here that is not a creative: it is the evidence that the ad budget in the
-  // fee actually gets spent on a live campaign.
-  { title: 'A live Google Ads account', kind: 'Campaign management', student: '', src: '/work/google-ads-live.webp', ratio: '4/5' },
+  // The student's own live Google Ads account, confirmed as theirs, now inside
+  // the creative they built around it — so the tile carries the proof that the
+  // ad budget in the fee gets spent on something real and reads as design work
+  // rather than a screenshot.
+  { title: 'Turn clicks into customers', kind: 'Google Ads creative', student: '', src: '/work/google-ads-creative.webp', ratio: '4/5' },
   { title: 'Aurelia, launch creative', kind: 'Real estate ad', student: '', src: '/work/realestate-aurelia.webp', ratio: '9/16' },
   { title: 'AI marketing, key visual', kind: 'Campaign poster', student: '', src: '/work/campaign-poster.webp', ratio: '4/5' },
   { title: 'Fashion label, engagement post', kind: 'Social creative', student: '', src: '/work/fashion-social-post.webp', ratio: '1/1' },
