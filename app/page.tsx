@@ -9,7 +9,6 @@ import CreativeDirector from '@/components/sections/CreativeDirector';
 import Stack from '@/components/sections/Stack';
 import Portfolio from '@/components/sections/Portfolio';
 import Curriculum from '@/components/sections/Curriculum';
-import Audiences from '@/components/sections/Audiences';
 import Classroom from '@/components/sections/Classroom';
 import Careers from '@/components/sections/Careers';
 import Numbers from '@/components/sections/Numbers';
@@ -27,16 +26,27 @@ import StickyCta from '@/components/ui/StickyCta';
  * ask them, rather than the order the argument would prefer to make them:
  *
  *   what is this → what do I walk out with → what changed → why not a cheaper
- *   online course → is it for me → how does the month run → what will I make →
- *   who teaches it → does it work → then the detail: who directs, the tools,
- *   the portfolio, the full syllabus, the room, where it leads, the numbers →
- *   the honest caveats → the price → questions → ask
+ *   online course → is it for me and where does it lead → how does the month
+ *   run → what will I make → who teaches it → does it work → then the detail:
+ *   who directs, the portfolio, the full syllabus, the tools, the room, the
+ *   numbers → the honest caveats → the price → questions → ask
  *
  * "Is it for me" and the trust pair (who teaches it, does it work) used to sit
  * at screens 18, 26 and 28 of a 36-screen page. Nobody scrolls that far to
  * find out whether a course is for them. The price is answered twice: once in
  * the hero status line for the people who only want the number, and once in
  * full where it can be justified.
+ *
+ * Two arrangement rules the order is also serving:
+ *
+ *   1. The reader is segmented once. "Who this is for" and "where this goes
+ *      next" were separate sections asking the same question twenty screens
+ *      apart; they are now one section (Careers) at screen four, which is
+ *      where somebody is still deciding whether to keep reading.
+ *   2. The three "the tool is not the skill" beats — Pillars, CreativeDirector
+ *      and Stack — are spread rather than stacked. Stack used to run directly
+ *      after CreativeDirector, so the page made the same argument twice in a
+ *      row and sounded like it was insisting.
  */
 export default function Page() {
   return (
@@ -50,17 +60,16 @@ export default function Page() {
         <ProofStrip />
         <Pillars />
         <Comparison />
-        <Audiences />
+        <Careers />
         <TheMonth />
         <Work />
         <Teachers />
         <Proof />
         <CreativeDirector />
-        <Stack />
         <Portfolio />
         <Curriculum />
+        <Stack />
         <Classroom />
-        <Careers />
         <Numbers />
         <Outcomes />
         <Fee />

@@ -292,16 +292,6 @@ export const TOOL_STRIP = [
 
 
 
-/** Section 09 — who this is for. */
-export const AUDIENCES = [
-  { who: 'Students', why: 'Leave with work to show, not a certificate to mention.' },
-  { who: 'Digital marketers', why: 'Do the same job in a fraction of the time, and take on the creative half.' },
-  { who: 'Creators', why: 'Produce more, and produce things you could not shoot.' },
-  { who: 'Designers', why: 'Move from making assets to directing them.' },
-  { who: 'Business owners', why: 'Build the marketing engine instead of renting it.' },
-  { who: 'Freelancers', why: 'Turn this into services you can price and sell.' },
-];
-
 /** Section 10 — the room is the point. */
 export const CLASSROOM = [
   { title: 'Live demonstrations', body: 'You watch the work happen, at the speed it actually happens.' },
@@ -312,12 +302,43 @@ export const CLASSROOM = [
   { title: 'Real projects', body: 'Everything you build is for a real business, not a made-up one.' },
 ];
 
-/** Section 11 — the doors this opens. */
+/**
+ * Sections 09 + 11 of the brief, now one — who this is for, and the door each
+ * of them leaves by.
+ *
+ * This was two sections until recently: a six-persona "who this is for" grid
+ * near the top of the page, and this four-door "where this goes next" grid
+ * twenty screens below it. They were the same sort performed twice — the
+ * reader decided they were a freelancer, scrolled for twenty minutes, and was
+ * asked to decide whether they wanted to freelance. The personas are now the
+ * `who` line on the door that was already describing them, which means the
+ * page segments the reader once, early, where the decision is still live.
+ */
 export const CAREERS = [
-  { door: 'Get hired', roles: ['AI marketing specialist', 'Digital marketing executive', 'Content strategist', 'Performance marketer'] },
-  { door: 'Freelance', roles: ['AI content', 'Creative production', 'Video ads', 'Marketing automation'] },
-  { door: 'Build a business', roles: ['Agency', 'AI marketing services', 'Content studio'] },
-  { door: 'Build your brand', roles: ['Creator', 'Consultant', 'Educator'] },
+  {
+    door: 'Get hired',
+    who: 'Students and working marketers',
+    why: 'Leave with work to show rather than a certificate to mention — or keep the job you have and do it in a fraction of the time, taking on the creative half as well.',
+    roles: ['AI marketing specialist', 'Digital marketing executive', 'Content strategist', 'Performance marketer'],
+  },
+  {
+    door: 'Freelance',
+    who: 'Freelancers and designers',
+    why: 'Turn this into services you can price and sell, and move from making the assets to directing them.',
+    roles: ['AI content', 'Creative production', 'Video ads', 'Marketing automation'],
+  },
+  {
+    door: 'Build a business',
+    who: 'Business owners',
+    why: 'Build the marketing engine instead of renting it, and stop paying a retainer for work you can brief and judge yourself.',
+    roles: ['Agency', 'AI marketing services', 'Content studio'],
+  },
+  {
+    door: 'Build your brand',
+    who: 'Creators',
+    why: 'Produce more, and produce the things you could never have shot — without a crew, a studio or a budget.',
+    roles: ['Creator', 'Consultant', 'Educator'],
+  },
 ];
 
 /** Section 12 — services, framed as work you can sell rather than money promised. */
