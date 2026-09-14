@@ -265,9 +265,11 @@ export type WorkItem = {
 };
 
 export const WORK: WorkItem[] = [
-  // Real work. Transcoded from the supplied masters to 720px, muted (the
-  // gallery plays them silently) and re-encoded: 22MB of source became 3MB.
-  // `student` is empty pending the credit — see the note on the type.
+  // Real work. Videos transcoded from the supplied masters to 720px and muted
+  // (the gallery plays them silently); stills renamed by what they actually
+  // are rather than the slot they arrived in, resized and converted to WebP —
+  // 2.6MB of PNG and JPEG became 244KB. `student` is empty on every row
+  // pending credits; see the note on the type.
   { title: 'Headphones, product reel', kind: 'AI product film', student: '', src: '/work/reel-headphones.mp4', poster: '/work/reel-headphones.jpg', type: 'video', ratio: '9/16' },
   { title: 'Festive kurta, try-on', kind: 'UGC-style ad', student: '', src: '/work/ugc-kurta.mp4', poster: '/work/ugc-kurta.jpg', type: 'video', ratio: '9/16' },
   // A spec piece against a real brand — the trademark and trade dress are
@@ -275,11 +277,14 @@ export const WORK: WorkItem[] = [
   // owner's explicit instruction after that was raised. The `kind` says "spec"
   // so the page never implies it was commissioned work.
   { title: 'Pringles, brand film', kind: 'Brand film (spec)', student: '', src: '/work/film-pringles.mp4', poster: '/work/film-pringles.jpg', type: 'video', ratio: '16/9' },
+  // A student's own Google Ads account, confirmed as theirs. The one artefact
+  // here that is not a creative: it is the evidence that the ad budget in the
+  // fee actually gets spent on a live campaign.
+  { title: 'A live Google Ads account', kind: 'Campaign management', student: '', src: '/work/google-ads-live.webp', ratio: '4/5' },
+  { title: 'Aurelia, launch creative', kind: 'Real estate ad', student: '', src: '/work/realestate-aurelia.webp', ratio: '9/16' },
+  { title: 'AI marketing, key visual', kind: 'Campaign poster', student: '', src: '/work/campaign-poster.webp', ratio: '4/5' },
+  { title: 'Fashion label, engagement post', kind: 'Social creative', student: '', src: '/work/fashion-social-post.webp', ratio: '1/1' },
 
-  { title: 'Kovai Silks, festival campaign', kind: 'AI ad campaign', student: 'Sample entry', src: '/work/campaign-01.svg', ratio: '4/5', placeholder: true },
-  { title: 'Cold brew, studio set', kind: 'Product photography', student: 'Sample entry', src: '/work/product-01.svg', ratio: '1/1', placeholder: true },
-  { title: 'Saravanampatti launch', kind: 'Real estate creative', student: 'Sample entry', src: '/work/realestate-01.svg', ratio: '4/5', placeholder: true },
-  { title: 'Thirty days of posts', kind: 'Social campaign', student: 'Sample entry', src: '/work/social-01.svg', ratio: '4/5', placeholder: true },
   { title: 'Clinic booking page', kind: 'Landing page', student: 'Sample entry', src: '/work/landing-01.svg', ratio: '16/9', placeholder: true },
 ];
 
