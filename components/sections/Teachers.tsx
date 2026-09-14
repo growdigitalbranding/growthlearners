@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 import { TEACHERS } from '@/lib/content';
 import SampleBadge from '../ui/SampleBadge';
@@ -62,6 +63,24 @@ export default function Teachers() {
               <p className="mt-1 text-[0.9375rem] text-muted">{teacher.role}</p>
 
               <p className="mt-5 leading-relaxed text-ink">{teacher.credential}</p>
+
+              {teacher.linkedin ? (
+                <a
+                  href={teacher.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-1.5 self-start py-3 text-[0.9375rem]
+                             font-medium text-accent-deep underline decoration-accent/40
+                             underline-offset-4 transition-colors duration-150
+                             hover:decoration-accent focus-visible:decoration-accent"
+                >
+                  Check this profile
+                  <ArrowUpRight size={15} strokeWidth={2.2} aria-hidden />
+                  {/* The arrow tells sighted readers the tab will change; this
+                      tells everyone else. */}
+                  <span className="sr-only">on LinkedIn (opens in a new tab)</span>
+                </a>
+              ) : null}
 
               <p className="mt-auto border-l-2 border-accent pl-4 pt-6 text-[0.9375rem] text-muted">
                 <span className="font-medium text-ink">Takes:</span> {teacher.teaches}

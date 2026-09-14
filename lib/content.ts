@@ -485,6 +485,12 @@ export type Teacher = {
   teaches: string;
   /** Optional real photo at /public/team/<file>. Never stock. */
   photo?: string;
+  /**
+   * Public profile, so the credential above can be checked rather than
+   * believed. This is the whole point of the section: a parent deciding on
+   * ₹18,999 should be able to click through and see the person is real.
+   */
+  linkedin?: string;
   /** Sample entry. Delete the flag when the row becomes real. */
   placeholder?: boolean;
 };
@@ -513,11 +519,16 @@ export type Teacher = {
  */
 export const TEACHERS: Teacher[] = [
   {
+    // The profile URL is real and supplied. Everything else on this row is
+    // still the prompt, not the answer — the name could not be read from the
+    // page (LinkedIn blocks automated fetches) and guessing it from the URL
+    // slug is not good enough for the one section a parent checks.
     name: 'Sample entry, replace me',
     role: 'Performance marketing lead, Growthlearners',
     credential:
       'Write what this person actually runs, for whom, at what scale. Something a parent could check on a phone call. Not "expert in performance marketing".',
     teaches: 'Stage 04, sessions 16 to 20',
+    linkedin: 'https://www.linkedin.com/in/venugopalbalajir/',
     placeholder: true,
   },
   {
